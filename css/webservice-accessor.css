@@ -1,0 +1,56 @@
+﻿.heading {
+    font-weight: 500;
+    display: inline;
+    font-size: 20px;
+}
+.content-holder {
+    font-weight:500;
+    font-size:16px;
+    display:inline;
+}
+.go {
+    background-color: green;
+    color: white;
+    border: medium none;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 5px;
+    display: inline;
+    cursor:pointer;
+}
+h4,h3 {
+    font-weight:500;
+    font-size:16px;
+    display:table;
+}
+h3 {
+    font-size:24px;
+}
+a {
+    text-decoration:none;
+    color:#428BCA;
+    font-weight:500;
+    font-size:24px;
+}
+
+@media (min-width:700px) {
+    .container {
+        display: table;
+        margin-left: 15px;
+        margin-right: 15px;
+        width:600px;
+    }
+}
+@media (max-width:699px) {
+    .container {
+        margin:auto;
+        width:100%;
+    }
+    pre {
+     white-space: pre-wrap;       /* css-3 */
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+}

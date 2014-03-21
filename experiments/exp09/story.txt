@@ -1,0 +1,6 @@
+WebService00.aspx Retrieve HardCoded Information
+WebService01.aspx Retrieve Information Dynamically  
+WebService02.aspx Retrieve More Movies with same title
+WebService03.aspx Extract more info on hover
+WebService04.aspx Movie Slideshow
+WebService05.aspx Extracting Reviews

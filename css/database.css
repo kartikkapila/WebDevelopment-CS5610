@@ -1,0 +1,23 @@
+﻿.input-labels {
+    text-align:right;
+}
+h3 {
+    display: table;
+}
+.entity-username, .entity-password, .entity-confirm-password, .entity-email {
+    display:inline;
+    margin-top:10px;
+    margin-left:0px;
+    display:none;
+}
+.col-md-2 {
+    padding:0px;
+    margin-left:5px;
+}
+
+.repeater {
+    border:1px solid blue;
+    border-radius:5px;
+    margin-bottom:5px;
+    padding:10px;
+}

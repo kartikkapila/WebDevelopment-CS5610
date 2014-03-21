@@ -1,0 +1,22 @@
+﻿h3 {
+    font-weight:500;
+    font-size:24px;
+}
+h4 {
+    font-weight:500;
+    font-size:20px;
+}
+.non-underlined-links {
+    text-decoration:none;
+    color:#428BCA;
+    font-weight:500;
+    font-size:22px;
+}
+.margin-provider {
+    margin-left:30px;
+    margin-right:30px;
+}
+.username {
+    color:#428BCA;
+    font-size:24px;
+}

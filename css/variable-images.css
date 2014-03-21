@@ -1,0 +1,48 @@
+﻿h3
+{
+    padding: 0;
+    margin: 0;
+    font-family: MingLiU;
+    font-size: large;
+    text-transform: uppercase;
+    color: #1B6E80;
+}
+
+.container 
+{
+    margin : 0px 50px;
+}
+.sidebar 
+{
+    width : 200px;
+    float : right;
+    background-color:#F8DFC9;
+    padding:10px;
+}
+.main 
+{
+    margin-right : 400px;
+    background-color:#DBFF70;
+    padding:10px;
+}
+    .main img
+    {
+        max-width : 100%;
+    }
+
+@media (min-width:601px)
+{
+    .intro
+    {
+        width: 600px;
+    }
+}
+
+@media (min-width:50px) and (max-width:600px)
+{
+    .intro
+    {
+        width:100%;
+        margin:auto;
+    }
+}

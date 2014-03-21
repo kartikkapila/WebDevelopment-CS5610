@@ -1,0 +1,4 @@
+WebServiceAccessor00.aspx Get a Message from a WebService
+WebServiceAccessor01.aspx Get Movie Name from a WebService
+WebServiceAccessor02.aspx Get a List of Movies from a WebService
+story.txt

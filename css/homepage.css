@@ -1,0 +1,213 @@
+﻿body
+{
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+line-height: 1.42857;
+font-size:14px;
+padding-top:60px;
+}
+
+*, *:before, *:after
+{
+-moz-box-sizing:border-box;
+}
+
+.nav-background-provider
+{
+background-color: rgb(34, 34, 34);
+width: 100%;
+position: fixed;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+z-index: 1030;
+display: table;
+height: 50px;
+}
+
+.margin-provider
+{         
+padding-right: 15px;
+padding-left: 15px;
+margin-left: auto;
+margin-right: auto;
+}
+
+@media (min-width:1200px) /*Large Screens*/
+{
+    .margin-provider
+    {
+        width:1170px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-left: auto;
+        margin-right: auto;           
+    }
+        .margin-provider:after, .margin-provider:before
+        {
+            content:" ";
+            display:table;
+        }
+}
+
+@media (min-width:992px) and (max-width:1200px) /*Medium Screens*/
+{
+    .margin-provider
+    {        
+        width:962px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-left: auto;
+        margin-right: auto;
+           
+    }
+    .margin-provider:after, .margin-provider:before
+    {
+        content:" ";
+        display:table;
+    }
+}
+
+@media (min-width:768px) and (max-width:992px) /*Small Screens*/
+{
+    .margin-provider
+    {   width:738px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        .margin-provider:after, .margin-provider:before
+        {
+            content:" ";
+            display:table;
+        }
+}
+
+
+.nav-bar-provider
+{
+    padding-right: 10px;
+    padding-left: 10px;
+    list-style: none outside none;
+    margin: 0px;
+    display: table-row;
+    width:auto;
+}
+
+.nav-bar-provider:after, .nav-bar-provider:before
+{
+    content:" ";
+}
+
+    .nav-bar-provider > li
+    {
+        position: relative;
+        display: table-cell;
+    }
+
+        .nav-bar-provider > li > a
+        {
+            padding: 18px 15px;
+            position:relative;
+            display:block;
+            text-decoration:none;
+        }
+       
+        .nav-bar-provider > li > a:link, a:visited
+        {
+            color:rgb(153, 153, 153);
+        }
+
+        .nav-bar-provider > li > a:hover
+        {
+            text-decoration:none;
+            color:white;
+        }
+
+h3
+{
+    font-size:24px;
+    font-weight:500;
+    color:inherit;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+@media (min-width:1200px)
+{
+    .table
+    {
+        width:1140px;
+        display:table;
+    }
+
+    .image-cell,.content-cell,.tools-cell
+    {
+        width:350px;
+        display:table-cell;
+        float:left;
+        padding:15px 15px;
+        margin-top:40px;
+    }
+}
+@media (min-width:992px) and (max-width:1200px)
+{
+    .table
+    {
+        width:960px;
+        display:table;
+    }
+
+    .image-cell,.content-cell,.tools-cell
+    {
+        display:table-cell;
+        float:left;
+        padding:15px 15px;
+        margin-top:40px;
+        height:inherit;
+    }
+
+    .image-cell, .tools-cell
+    {
+        width:270px;
+    }
+    .content-cell
+    {
+        width:350px;
+    }
+}
+
+.tools-cell a
+{   
+    color:rgb(66, 139, 202);
+    text-decoration:none;
+}
+
+.tools-cell a:hover
+{
+    text-decoration:underline;
+    color:rgb(42, 100, 150);
+}
+
+/*experiments.aspx*/
+hr
+{
+    border:1px solid rgb(238,238,238);
+    border-collapse:collapse;
+}
+
+
+.new-style {
+    display:inline;
+}
+.new-style a {
+    margin-right:5px;
+}
+.new-style h4 {
+    display:inline;
+    background-color:red;
+    color:white;
+    padding:2px;
+    border-radius:3px;
+}
