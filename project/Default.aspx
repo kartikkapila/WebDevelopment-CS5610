@@ -36,7 +36,7 @@
                 <div class="col-md-6" id="player" style="display:none;"></div>
             </div><br />
             <h3>Movies You May Like</h3>
-            <hr/>
+            <hr style="padding:0px;margin-bottom:0px;"/>
             <div class="similar-movies-holder"></div>
             <br />
              <div class="reviews-holder col-md-6" style="padding:0px;">
@@ -111,7 +111,7 @@
     <!-- Templates -->
     <div class="templates" style="display:none;">
         <!-- similar movies templates -->
-        <img class="similar-movie-img templates" src="#" style="height:300px;margin-right:20px;"/>
+        <img class="similar-movie-img templates" src="#" style="height:300px;margin-right:20px;margin-top:20px;"/>
         <!-- reviews templates -->
         <div class="critic templates" style="display:inline;color:#428BCA;"></div>
         <div class="date templates" style="display:inline;margin-left:10px;"></div>
@@ -119,6 +119,7 @@
         <div class="publication templates"></div>
         <button class="like-btn btn-warning templates">like</button>
         <!-- details of the movie -->
+        <div class="genres btn btn-primary templates"></div>
     </div>
     <script src="../jquery/jquery-2.1.0.min.js"></script>
     <script src="../javascript/bootstrap.min.js"></script>
@@ -146,8 +147,8 @@
         var search_results = $(".search-results");
         var movie_thumbnail = $(".movie-thumbnail");
         var details_area = $(".details-area");
-        var videoId;
-        var player;
+        var videoId=null;
+        var player=null;
         var reviews_btn = $(".reviews-btn");
         var reviews_holder = $(".reviews-holder");
         var similar_movies_holder = $(".similar-movies-holder");
@@ -164,18 +165,22 @@
                 url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?",
                 data:param,
                 dataType: "jsonp",
-                jsonpCallback: 'callback1',
                 success: function (data) {
                     total_new_movies = data.movies.length;
                     upcoming_movies.css("display", "table");
                     upcoming_movies.empty();
+                    var k = 0;
                     for (var i = 0; i < total_new_movies; i++) {
-                        upcoming_movies.append($("<img>").attr("src", data.movies[i].posters.original)
-                                           .attr("id", i)
-                                           .css("height", "400px")
-                                           .css('display', 'none')
-                                           .on('click', data, clicked));
+                        if (data.movies[i].posters.original != "http://images.rottentomatoescdn.com/images/redesign/poster_default.gif") {
+                            upcoming_movies.append($("<img>").attr("src", data.movies[i].posters.profile)
+                                               .attr("id", k)
+                                               .css("height", "200px")
+                                               .css('display', 'none')
+                                               .on('click', data, clicked));
+                            k++;
+                        }
                     }
+                    total_new_movies = k;
                     display_data(0);
                 }
             });
@@ -235,7 +240,7 @@
                             search_value = response.movies[0].title;
                             findSimilarMovies(response.movies[0].id);
                             displayReviews(response.movies[0]);
-//                            youtube(search_value + " - trailer"); 
+                            youtube(search_value + " - trailer"); 
                         }
                     }
                 });
@@ -307,26 +312,36 @@
                 url: "http://api.rottentomatoes.com/api/public/v1.0/movies/" + response.id + "/reviews.json?",
                 data:params,
                 dataType: "jsonp",
-                jsonpCallback: 'callback3',
                 success: function (data) {
+                    console.log(response);
+                    console.log(data);
                     reviews_holder.empty();
                     var critic = $(".critic").clone().removeClass("templates");
                     var date = $(".date").clone().removeClass("templates");
                     var quote = $(".quote").clone().removeClass("templates");
                     var publication = $(".publication").clone().removeClass("templates");
                     var like_btn = $(".like-btn").clone().removeClass("templates");
-                    for (var i = 0; i < data.reviews.length; i++) {       
-                        reviews_holder.append(
-                            critic.clone().html(data.reviews[i].critic),
-                            date.clone().html(data.reviews[i].date),
-                            "<br />",
-                            quote.clone().html(data.reviews[i].quote),
-                            publication.clone().html(data.reviews[i].publication),
-                            "Do you like this review? ", like_btn.clone(), "<br />", "<br />");
+                    for (var i = 0; i < data.reviews.length; i++) {
+                        if (data.reviews[i].critic != "") {
+                            reviews_holder.append(
+                                critic.clone().html(data.reviews[i].critic),
+                                date.clone().html(data.reviews[i].date),
+                                "<br />",
+                                quote.clone().html(data.reviews[i].quote),
+                                publication.clone().html(data.reviews[i].publication),
+                                "Do you like this review? ", like_btn.clone().attr('id',i).on('click',data,likerequest), "<br />", "<br />").attr('id',response.alternate_ids.imdb);
+                        }
                    }
                 }
             });
         }
+
+
+        function likerequest(response) {
+            console.log(response);
+            console.log(response.currentTarget.id);
+        }
+
         /*
          * Login Controls
          */
@@ -399,6 +414,7 @@
         }
 
         function getMovieInfo(id) {
+            console.log(this);
             var params = {
                 api_key: "56723ab4454644a4f493306c8d6c7240"
             }
@@ -407,8 +423,10 @@
                 data: params,
                 dataType: 'jsonp',
                 success: function (response) {
-                    console.log(response);
-                    console.log("budget: $" + response.budget);
+                    var genres = $(".genres").clone().removeClass("templates");
+                    genres.html(response.genres[0].name);
+                    detail.append(detail_thumbnail_img);
+/*                    console.log("budget: $" + response.budget);
                     console.log("title: " + response.original_title);
                     console.log("genres: " + response.genres[0].name);
                     console.log(response.overview);
@@ -419,6 +437,7 @@
                     console.log(response.tagline);
                     console.log("rating: " + response.vote_average);
                     console.log("total votes: " + response.vote_count);
+*/
                 }
             });
         }
