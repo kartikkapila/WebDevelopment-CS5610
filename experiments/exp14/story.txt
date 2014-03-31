@@ -1,0 +1,3 @@
+LinqToSql00.aspx Retrieve all the reviews
+LinqToSql01.aspx Retrive reviews of a particular user
+story.txt story file
