@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="kkapila" EntityNamespace="edu.neu.ccis.kkapila.kkapilaCS" ContextNamespace="edu.neu.ccis.kkapila.kkapilaCS" Class="kkapilaCSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=127.0.0.1;Initial Catalog=kkapila;Persist Security Info=True;User ID=kkapila" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="kkapilaCS" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.proj_likes" Member="proj_likes">
+    <Type Name="proj_like">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="critic" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="quote" Type="System.String" DbType="VarChar(5000) NOT NULL" CanBeNull="false" />
+      <Column Name="imdbId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="isCriticAMember" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="proj_user_proj_like" Member="proj_user" ThisKey="username" OtherKey="username" Type="proj_user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.proj_users" Member="proj_users">
+    <Type Name="proj_user">
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="aboutMe" Type="System.String" DbType="VarChar(5000) NOT NULL" CanBeNull="false" />
+      <Column Name="profileViews" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="proj_user_proj_like" Member="proj_likes" ThisKey="username" OtherKey="username" Type="proj_like" />
+    </Type>
+  </Table>
+</Database>
