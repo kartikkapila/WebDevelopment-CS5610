@@ -23,7 +23,7 @@
         </div>
         <div class="table margin-provider">
             <div class="image-cell">
-                <img src="me1.jpg" style="width:100%;border: solid;border-radius: 55px;"/>
+                <img src="images/me1.jpg" style="width:100%;border: solid;border-radius: 55px;"/>
             </div>
             <div class="content-cell">
                 <h3>About Me</h3>
