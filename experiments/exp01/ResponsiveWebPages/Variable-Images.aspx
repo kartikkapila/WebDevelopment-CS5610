@@ -29,7 +29,7 @@
         <div class="main">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper quam et lectus euismod tempor
         Donec euismod risus risus, ac porttitor lacus luctus a. Pellentesque tristique sem quis dui commodo, at feugiat urna vulputate.</p>
-        <img src="../../../leh.jpg" />
+        <img src="../../../images/leh.jpg" />
         <p>Morbi diam dui, cursus ac tortor at, ullamcorper placerat libero. Aenean lacinia magna ut est tempus lacinia. Sed ultricies nec neque nec malesuada. Donec augue dui, aliquet at magna a, consequat vulputate libero. Proin vitae nulla at tellus vestibulum pulvinar et sed lacus. In ut molestie urna. Suspendisse luctus luctus ipsum vel dignissim. Curabitur vel venenatis nisl, mollis bibendum diam. Curabitur in metus vehicula, pretium sem vitae, sollicitudin urna. Sed condimentum nibh a neque auctor varius. Praesent eget orci at orci commodo eleifend id sit amet nisi. Aenean rhoncus, quam at laoreet iaculis, dui nisi feugiat magna, ut accumsan felis lectus ut diam. Maecenas at neque malesuada neque ullamcorper rutrum. Sed pretium ac velit sed elementum. Nam nec tortor vitae nibh fringilla viverra. Nullam pulvinar suscipit risus, pellentesque dapibus urna egestas eget.</p>
         </div>
 
