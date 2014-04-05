@@ -1,3 +1,4 @@
 Responsive-side-bars.aspx Responsive Side Bars
 Variable-Layout.aspx Variable Layout
 Variable-Images.aspx Variable Images
+story.txt story file

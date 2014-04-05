@@ -30,16 +30,16 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertproj_like(proj_like instance);
-    partial void Updateproj_like(proj_like instance);
-    partial void Deleteproj_like(proj_like instance);
     partial void Insertproj_user(proj_user instance);
     partial void Updateproj_user(proj_user instance);
     partial void Deleteproj_user(proj_user instance);
+    partial void Insertproj_like(proj_like instance);
+    partial void Updateproj_like(proj_like instance);
+    partial void Deleteproj_like(proj_like instance);
     #endregion
 		
 		public kkapilaCSDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["kkapilaCS"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["kkapilaConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -68,14 +68,6 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<proj_like> proj_likes
-		{
-			get
-			{
-				return this.GetTable<proj_like>();
-			}
-		}
-		
 		public System.Data.Linq.Table<proj_user> proj_users
 		{
 			get
@@ -83,227 +75,12 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 				return this.GetTable<proj_user>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.proj_likes")]
-	public partial class proj_like : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _username;
-		
-		private string _critic;
-		
-		private string _quote;
-		
-		private string _imdbId;
-		
-		private string _isCriticAMember;
-		
-		private EntityRef<proj_user> _proj_user;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnusernameChanging(string value);
-    partial void OnusernameChanged();
-    partial void OncriticChanging(string value);
-    partial void OncriticChanged();
-    partial void OnquoteChanging(string value);
-    partial void OnquoteChanged();
-    partial void OnimdbIdChanging(string value);
-    partial void OnimdbIdChanged();
-    partial void OnisCriticAMemberChanging(string value);
-    partial void OnisCriticAMemberChanged();
-    #endregion
-		
-		public proj_like()
-		{
-			this._proj_user = default(EntityRef<proj_user>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		public System.Data.Linq.Table<proj_like> proj_likes
 		{
 			get
 			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string username
-		{
-			get
-			{
-				return this._username;
-			}
-			set
-			{
-				if ((this._username != value))
-				{
-					if (this._proj_user.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnusernameChanging(value);
-					this.SendPropertyChanging();
-					this._username = value;
-					this.SendPropertyChanged("username");
-					this.OnusernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_critic", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string critic
-		{
-			get
-			{
-				return this._critic;
-			}
-			set
-			{
-				if ((this._critic != value))
-				{
-					this.OncriticChanging(value);
-					this.SendPropertyChanging();
-					this._critic = value;
-					this.SendPropertyChanged("critic");
-					this.OncriticChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quote", DbType="VarChar(5000) NOT NULL", CanBeNull=false)]
-		public string quote
-		{
-			get
-			{
-				return this._quote;
-			}
-			set
-			{
-				if ((this._quote != value))
-				{
-					this.OnquoteChanging(value);
-					this.SendPropertyChanging();
-					this._quote = value;
-					this.SendPropertyChanged("quote");
-					this.OnquoteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imdbId", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string imdbId
-		{
-			get
-			{
-				return this._imdbId;
-			}
-			set
-			{
-				if ((this._imdbId != value))
-				{
-					this.OnimdbIdChanging(value);
-					this.SendPropertyChanging();
-					this._imdbId = value;
-					this.SendPropertyChanged("imdbId");
-					this.OnimdbIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isCriticAMember", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string isCriticAMember
-		{
-			get
-			{
-				return this._isCriticAMember;
-			}
-			set
-			{
-				if ((this._isCriticAMember != value))
-				{
-					this.OnisCriticAMemberChanging(value);
-					this.SendPropertyChanging();
-					this._isCriticAMember = value;
-					this.SendPropertyChanged("isCriticAMember");
-					this.OnisCriticAMemberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="proj_user_proj_like", Storage="_proj_user", ThisKey="username", OtherKey="username", IsForeignKey=true)]
-		public proj_user proj_user
-		{
-			get
-			{
-				return this._proj_user.Entity;
-			}
-			set
-			{
-				proj_user previousValue = this._proj_user.Entity;
-				if (((previousValue != value) 
-							|| (this._proj_user.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._proj_user.Entity = null;
-						previousValue.proj_likes.Remove(this);
-					}
-					this._proj_user.Entity = value;
-					if ((value != null))
-					{
-						value.proj_likes.Add(this);
-						this._username = value.username;
-					}
-					else
-					{
-						this._username = default(string);
-					}
-					this.SendPropertyChanged("proj_user");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<proj_like>();
 			}
 		}
 	}
@@ -515,6 +292,253 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		{
 			this.SendPropertyChanging();
 			entity.proj_user = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.proj_likes")]
+	public partial class proj_like : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _username;
+		
+		private string _critic;
+		
+		private string _quote;
+		
+		private string _imdbId;
+		
+		private string _isCriticAMember;
+		
+		private string _reviewOrlikes;
+		
+		private EntityRef<proj_user> _proj_user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OncriticChanging(string value);
+    partial void OncriticChanged();
+    partial void OnquoteChanging(string value);
+    partial void OnquoteChanged();
+    partial void OnimdbIdChanging(string value);
+    partial void OnimdbIdChanged();
+    partial void OnisCriticAMemberChanging(string value);
+    partial void OnisCriticAMemberChanged();
+    partial void OnreviewOrlikesChanging(string value);
+    partial void OnreviewOrlikesChanged();
+    #endregion
+		
+		public proj_like()
+		{
+			this._proj_user = default(EntityRef<proj_user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					if (this._proj_user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_critic", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string critic
+		{
+			get
+			{
+				return this._critic;
+			}
+			set
+			{
+				if ((this._critic != value))
+				{
+					this.OncriticChanging(value);
+					this.SendPropertyChanging();
+					this._critic = value;
+					this.SendPropertyChanged("critic");
+					this.OncriticChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quote", DbType="VarChar(5000) NOT NULL", CanBeNull=false)]
+		public string quote
+		{
+			get
+			{
+				return this._quote;
+			}
+			set
+			{
+				if ((this._quote != value))
+				{
+					this.OnquoteChanging(value);
+					this.SendPropertyChanging();
+					this._quote = value;
+					this.SendPropertyChanged("quote");
+					this.OnquoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imdbId", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string imdbId
+		{
+			get
+			{
+				return this._imdbId;
+			}
+			set
+			{
+				if ((this._imdbId != value))
+				{
+					this.OnimdbIdChanging(value);
+					this.SendPropertyChanging();
+					this._imdbId = value;
+					this.SendPropertyChanged("imdbId");
+					this.OnimdbIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isCriticAMember", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string isCriticAMember
+		{
+			get
+			{
+				return this._isCriticAMember;
+			}
+			set
+			{
+				if ((this._isCriticAMember != value))
+				{
+					this.OnisCriticAMemberChanging(value);
+					this.SendPropertyChanging();
+					this._isCriticAMember = value;
+					this.SendPropertyChanged("isCriticAMember");
+					this.OnisCriticAMemberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reviewOrlikes", DbType="NChar(10)")]
+		public string reviewOrlikes
+		{
+			get
+			{
+				return this._reviewOrlikes;
+			}
+			set
+			{
+				if ((this._reviewOrlikes != value))
+				{
+					this.OnreviewOrlikesChanging(value);
+					this.SendPropertyChanging();
+					this._reviewOrlikes = value;
+					this.SendPropertyChanged("reviewOrlikes");
+					this.OnreviewOrlikesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="proj_user_proj_like", Storage="_proj_user", ThisKey="username", OtherKey="username", IsForeignKey=true)]
+		public proj_user proj_user
+		{
+			get
+			{
+				return this._proj_user.Entity;
+			}
+			set
+			{
+				proj_user previousValue = this._proj_user.Entity;
+				if (((previousValue != value) 
+							|| (this._proj_user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._proj_user.Entity = null;
+						previousValue.proj_likes.Remove(this);
+					}
+					this._proj_user.Entity = value;
+					if ((value != null))
+					{
+						value.proj_likes.Add(this);
+						this._username = value.username;
+					}
+					else
+					{
+						this._username = default(string);
+					}
+					this.SendPropertyChanged("proj_user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

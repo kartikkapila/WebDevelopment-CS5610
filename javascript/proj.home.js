@@ -13,19 +13,28 @@
         search_input: null,
         search_btn: null,
         login_btn: null,
+        logout_btn:null,
         upcoming_movies_holder: null,
         upcoming_movies: null,
         previous_upcoming_movies: null,
         next_upcoming_movies: null,
+        in_theatre_movies:null,
 
         init: function () {
             proj.home.dom.search_input = $(".search-input");
             proj.home.dom.search_btn = $(".search-btn");
+
             proj.home.dom.upcoming_movies_holder = $(".upcoming-movies-holder");
+
             proj.home.dom.login_btn = $(".login-btn");
+            proj.home.dom.logout_btn = $(".logout-btn");
+
             proj.home.dom.upcoming_movies = $(".upcoming-movies");
+
             proj.home.dom.previous_upcoming_movies = $(".previous-upcoming-movies");
             proj.home.dom.next_upcoming_movies = $(".next-upcoming-movies");
+
+            proj.home.dom.in_theatre_movies = $(".in-theatre-movies");
         }
     },
 
@@ -52,6 +61,8 @@
                 }
             });
             proj.home.dom.login_btn.click(proj.home.controller.login_btn_clicked);
+            proj.home.dom.logout_btn.click(proj.home.controller.logout_btn_clicked);
+
         },
         mouseEnterOnPrevious: function () {
             $(this).css('opacity', 1.0);
@@ -74,30 +85,40 @@
         login_btn_clicked: function() {
             proj.login.showPage();
         },
+        logout_btn_clicked: function () {
+            proj.state.currentUser.username = null;
+            proj.home.dom.login_btn.removeClass("page");
+            proj.home.dom.login_btn.addClass("page home results");
+            proj.home.dom.logout_btn.removeClass("home results");
+            proj.showPage("home");
+        },
+        handleUpcomingMoviesClicked: function(event) {
+            proj.results.show(event.currentTarget.id);
+        },
         display_data:function(flag) {
             /* flag = 0 : Display first item
              * flag = 1 : Display next item
              * flag = 2 : Display previous item
              */
             if (flag == 0) {
-                $(".upcoming-movies #" + 0).fadeIn(500, "swing");
+                $(".upcoming-movies ." + 0).fadeIn(500, "swing");
             } else if (flag == 1) {
                 for (var j = 0; j < proj.home.shared_variables.total_upcoming_movies; j++) {
-                    if ($(".upcoming-movies #" + j).css('display') == 'inline') {
-                        $(".upcoming-movies #" + j).css('display','none');
-                        $(".upcoming-movies #" + ((j + 1) % proj.home.shared_variables.total_upcoming_movies)).fadeIn(2000, "swing");
+                    if ($(".upcoming-movies ." + j).css('display') == 'inline') {
+                        $(".upcoming-movies ." + j).css('display','none');
+                        $(".upcoming-movies ." + ((j + 1) % proj.home.shared_variables.total_upcoming_movies)).fadeIn(2000, "swing");
                         return;
                     }
                 }
             } else if (flag == 2) {
-                if ($(".upcoming-movies #" + 0).css('display') == 'inline') {
-                    $(".upcoming-movies #" + 0).css('display', 'none');
-                    $(".upcoming-movies #" + (proj.home.shared_variables.total_upcoming_movies - 1)).fadeIn(2000, "linear");
+                if ($(".upcoming-movies ." + 0).css('display') == 'inline') {
+                    $(".upcoming-movies ." + 0).css('display', 'none');
+                    $(".upcoming-movies ." + (proj.home.shared_variables.total_upcoming_movies - 1)).fadeIn(2000, "linear");
                 } else {
                     for (var j = 1; j < proj.home.shared_variables.total_upcoming_movies; j++) {
-                        if ($(".upcoming-movies #" + j).css('display') == 'inline') {
-                            $(".upcoming-movies #" + j).css('display', 'none');
-                            $(".upcoming-movies #" + (j - 1)).fadeIn(500, "linear");
+                        if ($(".upcoming-movies ." + j).css('display') == 'inline') {
+                            $(".upcoming-movies ." + j).css('display', 'none');
+                            $(".upcoming-movies ." + (j - 1)).fadeIn(500, "linear");
                             return;
                         }
                     }
@@ -108,6 +129,10 @@
 
     services: {
         init: function () {
+            proj.home.services.loadUpcomingMovies(proj.home.renderer.renderUpcomingMovies);
+            proj.home.services.loadInTheatreMovies(proj.home.renderer.renderInTheatreMovies);
+        },
+        loadUpcomingMovies: function (callback) {
             var param = {
                 apikey: "y89qq3t53gmyxjrna294v2jg",
             }
@@ -115,8 +140,20 @@
                 url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?",
                 data: param,
                 dataType: 'jsonp',
-                success: proj.home.renderer.renderUpcomingMovies
+                success: callback
             });
+        },
+        loadInTheatreMovies: function (callback) {
+            var param = {
+                apikey: "y89qq3t53gmyxjrna294v2jg",
+                page_limit:5
+            }
+            $.ajax({
+                url: 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?',
+                data:param,
+                dataType: 'jsonp',
+                success:callback
+            })
         }
     },
 
@@ -128,13 +165,21 @@
             proj.home.dom.upcoming_movies.empty();
             for (var i = 0; i < proj.home.shared_variables.total_upcoming_movies; i++) {
                 if (response.movies[i].posters.profile != "http://images.rottentomatoescdn.com/images/redesign/poster_default.gif") {
-                    proj.home.dom.upcoming_movies.append(upcoming_movies_img.clone().attr('src', response.movies[i].posters.profile)
-                        .attr('id', k));
+                    proj.home.dom.upcoming_movies.append(
+                        upcoming_movies_img
+                        .clone()
+                        .attr('src', response.movies[i].posters.profile)
+                        .attr('id',response.movies[i].title)
+                        .addClass("" + k)
+                        .on('click',proj.home.controller.handleUpcomingMoviesClicked));
                     k++;
                 }
             }
             proj.home.shared_variables.total_upcoming_movies = k;
             proj.home.controller.display_data(0);
+        },
+        renderInTheatreMovies: function (response) {
+            console.log(response);
         }
     }
 }

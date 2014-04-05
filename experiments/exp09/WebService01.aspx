@@ -7,37 +7,22 @@
     <title></title>
     <link rel="stylesheet" type ="text/css" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" type ="text/css" href="../../css/home.css" />
-    <!-- TODO: create a css file and transfer all the css to the file -->
-    <style>
-        @media (min-width:610px)
-        {
-            .search
-            {
-                width:500px;
-            }
-        }
-        @media (max-width:609px)
-        {
-            .search
-            {
-                width:auto;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/webservices.css" />
+
 </head>
 <body>
     <div class="container">
         <h3>Movie Search Engine</h3>
         <p>Enter a movie name and click on search.</p>
-        <div class="search-bar" style="display:block;">
-             <input class ="search form-control" type="text" placeholder="Enter Movie Name" style="float:left;display:table;"/>&nbsp
-             <button class="search-btn btn btn-primary" style="clear:right;">Search</button>
+        <div class="search-bar">
+             <input class ="search form-control" type="text" placeholder="Enter Movie Name"/>&nbsp
+             <button class="search-btn btn btn-primary">Search</button>
         </div>
         <div style="clear:both;"></div><br /><br />
         <div class ="movie-holder">
-            <div class="movie-presenter" style="display:table;">
-                <img class="movie-thumbnail" src="../../me1.jpg" style="height:100px;float:left;" />
-                <h3 class="movie-title" style="float:left;clear:right;">Demo Title</h3>
+            <div class="movie-presenter">
+                <img class="movie-thumbnail" src="../../images/me1.jpg" />
+                <h3 class="movie-title">Demo Title</h3>
            </div>
         </div>
         <p>This is possible in the following ways:</p>

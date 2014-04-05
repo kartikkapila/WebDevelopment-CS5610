@@ -28,7 +28,13 @@
                 var password = proj.login.dom.login_password.val();
                 proj.login.services.checkUser(username,password);
             });
-        }
+            $(window).keypress(function (event) {
+                if (event.keyCode == 27) {
+                    proj.login.dom.close.click();
+                }
+            });
+        },
+
     },
     services: {
         checkUser: function (username, password) {
@@ -44,6 +50,9 @@
                 success: function (response) {
                     if (response.d == true) {
                         proj.state.currentUser.username = username;
+                        proj.home.dom.login_btn.addClass("page");
+                        proj.home.dom.login_btn.removeClass("home results");
+                        proj.home.dom.logout_btn.addClass("home results");
                         proj.showPage('home');
                     } else {
                         alert('Invalid username and password');

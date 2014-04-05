@@ -7,30 +7,15 @@
     <title></title>
     <link rel="stylesheet" type ="text/css" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" type ="text/css" href="../../css/home.css" />
-    <style>
-    @media (min-width:610px)
-    {
-        .search
-        {
-            width:500px;
-        }
-    }
-    @media (max-width:609px)
-    {
-        .search
-        {
-            width:auto;
-        }
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/webservices.css" />
 </head>
 <body>
     <div class="container">
         <h3>Creating the search Page</h3>
         <p>Enter a movie name and click on search.</p>
-        <div class="search-bar" style="display:block;">
-             <input class ="search form-control" type="text" placeholder="Enter Movie Name" style="float:left;display:table;"/>&nbsp
-             <button class="search-btn btn btn-primary" style="clear:right;">Search</button>
+        <div class="search-bar">
+             <input class ="search form-control" type="text" placeholder="Enter Movie Name"/>&nbsp
+             <button class="search-btn btn btn-primary">Search</button>
         </div>
         <br />
         <div class="thumbnails-holder"></div>

@@ -4,9 +4,13 @@
        margin:0;
        font-family: MingLiU;
        font-size: large;
+       font-weight:500;
        text-transform: uppercase;
        color: #1B6E80
     }
+h4 {
+    font-weight:500;
+}
 
 @media (min-width:50px) and (max-width:600px) {
     .wrapper {
@@ -37,4 +41,10 @@
         float: left;
     }
 }
-
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

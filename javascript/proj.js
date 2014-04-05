@@ -16,6 +16,7 @@ var proj = {
         proj.profile.init();
         proj.controller.init();
         proj.login.init();
+        proj.review.init();
         proj.showPage("home");
     },
     showPage: function (pageName) {

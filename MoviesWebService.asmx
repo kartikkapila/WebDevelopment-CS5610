@@ -23,6 +23,7 @@ public class WebService  : System.Web.Services.WebService {
             } return null;
         }
     }
+    
     [WebMethod]
     public Boolean checkUser(string username, string password) {
         using (kkapilaCSDataContext db = new kkapilaCSDataContext()) {
@@ -33,6 +34,30 @@ public class WebService  : System.Web.Services.WebService {
             else {
                 return true;
             }
+        }
+    }
+    
+    [WebMethod]
+    public bool saveReview(ProjLikesTO newReviewOrLike) {
+        using (kkapilaCSDataContext db = new kkapilaCSDataContext()) {
+            proj_like action = new proj_like();
+/*
+            action.username = "kartik1990";
+            action.critic = "kartik1990";
+            action.quote = "Amazing Movie, I love it";
+            action.imdbId = "tt0068646";
+            action.isCriticAMember = "true";
+            action.reviewOrlikes = "review";
+*/
+            action.username = newReviewOrLike.username;
+            action.critic = newReviewOrLike.critic;
+            action.quote = newReviewOrLike.quote;
+            action.imdbId = newReviewOrLike.imdbId;
+            action.isCriticAMember = newReviewOrLike.isCriticAMember;
+            action.reviewOrlikes = newReviewOrLike.reviewOrLikes;
+            db.proj_likes.InsertOnSubmit(action);
+            db.SubmitChanges();
+            return true;
         }
     }
 }

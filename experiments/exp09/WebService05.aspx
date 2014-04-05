@@ -6,31 +6,16 @@
     <title></title>
     <link rel="stylesheet" type ="text/css" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" type ="text/css" href="../../css/home.css" />
-    <style>
-        @media (min-width:610px)
-        {
-            .search
-            {
-                width:500px;
-            }
-        }
-        @media (max-width:609px)
-        {
-            .search
-            {
-                width:auto;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/webservices.css" />
 </head>
 <body>
     <div class="container">
-        <h3 style="display:table;">Creating the search Page</h3>
-        <div class="details-showers" style="width:500px;height:300px;display:none;float:right;"></div>
-        <p style="display:table;">Enter a movie name and click on search.</p>
-        <div class="search-bar" style="display:table;">
-             <input class ="search form-control" type="text" placeholder="Enter Movie Name" style="float:left;display:table;" required="required"/>&nbsp
-             <button class="search-btn btn btn-primary" style="clear:right;">Search</button>
+        <h3>Creating the search Page</h3>
+        <div class="details-showers"></div>
+        <p>Enter a movie name and click on search.</p>
+        <div class="search-bar">
+             <input class ="search form-control" type="text" placeholder="Enter Movie Name" required="required"/>&nbsp
+             <button class="search-btn btn btn-primary">Search</button>
         </div>
         <br />
         <div class="thumbnails-holder"></div>
@@ -105,16 +90,14 @@
                         for (var i = 0; i < 5; i++) {
                             if (data.reviews[i].critic != '' && data.reviews[i].quote != '') {
                                 movie_reviews.append($("<pre>").append($("<h5>").text(data.reviews[i].quote),
-                                                                       $("<h5>").text("-" + data.reviews[i].critic))
-                                                               .css("width","500px"));
+                                                                       $("<h5>").text("-" + data.reviews[i].critic)));
                             }
                         }
                     } else {
                         for (var i = 0; i < data.total; i++) {
                             if (data.reviews[i].critic != '') {
                                 movie_reviews.append($("<pre>").append($("<h5>").text(data.reviews[i].quote),
-                                                                   $("<h5>").text("-" + data.reviews[i].critic))
-                                                               .css("width","500px"));
+                                                                   $("<h5>").text("-" + data.reviews[i].critic)));
                             }
                         }
                     }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CSS-Button-Designing.aspx.cs" Inherits="experiments_exp05_CSS_Designing" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 
@@ -55,7 +55,7 @@
     </div>
     <div>
         <p>The css to build the rectangular button is as follows:</p>
-        <pre class="custom-quotes">
+        <pre>
 .custom-button
 {
     border-radius:8px;

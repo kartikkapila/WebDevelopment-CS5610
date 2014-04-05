@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CSS-Table-Display.aspx.cs" Inherits="experiments_exp05_CSS_Designing" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
     <h2>display:table property</h2> 
-    <h4>Using html tables for layout design is considered to be bad practice for the following reasons:</h4>
+    <p>Using html tables for layout design is considered to be bad practice for the following reasons:</p>
     <ol>
         <li>Tables take more time to download</li>
         <li>CSS gives us more flexibility and control over the layout as compared to tables</li>
@@ -19,7 +19,7 @@
     <div class="main">
         <div class="row">
             <div class="left-cell">
-                <h4>Default Button</h4>
+                <p>Default Button</p>
             </div>
             <div class="cell">
                 <button class="default-button">Submit</button>
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
              <div class="left-cell">
-                 <h4>Rectangular Button</h4>
+                 <p>Rectangular Button</p>
             </div>
              <div class="cell">
                  <button class="custom-button">Submit</button>
@@ -35,7 +35,7 @@
         </div>
         <div class="row">
              <div class="left-cell">
-                 <h4>Rounded Button</h4>
+                 <p>Rounded Button</p>
             </div>
             <div class="cell">
                  <button class="round-button">GO</button>
@@ -43,7 +43,7 @@
         </div>
         <div class="row">
             <div class="left-cell">
-                 <h4>Hover over the button</h4>
+                 <p>Hover over the button</p>
             </div>
             <div class="cell">
                 <button class="active-button">Submit</button>
@@ -51,41 +51,37 @@
         </div>
         <div class="row">
             <div class="left-cell">
-                 <h4>Hover over the button</h4>
+                 <p>Hover over the button</p>
             </div>
             <div class="cell">
                 <button class="active-round-button">GO</button>
             </div>
         </div>
     </div>
-    <p>The dashed green color border is obtained by using display:table as follows:
-        <pre class="custom-quotes">
-.main
-{
+    <p>The dashed green color border is obtained by using display:table as follows:</p>
+    <pre>
+.main {
     display:table;
     width:50%;
     border:2px green dashed;
 }
-        </pre>
-        Next we design the row by using display:table-row
-        <pre class="custom-quotes">
-.row
-{
+    </pre>
+    <p>Next we design the row by using display:table-row</p>
+    <pre>
+.row {
     margin:10px 10px;
     display:table-row;
     text-align:center;
 }
-        </pre>
-        Next we use cells to place our data inside the rows, using display:table-cell
-        <pre class="custom-quotes">
-.cell
-{
+    </pre>
+    <p>Next we use cells to place our data inside the rows, using display:table-cell</p>
+    <pre>
+.cell {
     display:table-cell;
     width:50%;
     border:1px dashed red; 
 }
-        </pre>
-    </p>
+    </pre>
     <h2>Sources</h2>
     <ul><li><a href="../../fileview/Default.aspx?~/experiments/exp05/CSS-Table-Display.aspx">ASPX</a></li>
         <li><a href="../../fileview/Default.aspx?~/css/display-property.css">CSS</a></li>

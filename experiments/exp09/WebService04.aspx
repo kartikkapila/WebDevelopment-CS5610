@@ -7,10 +7,11 @@
     <title></title>
     <link rel="stylesheet" type ="text/css" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" type ="text/css" href="../../css/home.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/webservices.css" />
 </head>
 <body>
     <div class="container">
-        <h3 style="display:table;">Creating the search Page</h3>
+        <h3>Creating the search Page</h3>
         <br />
         <h3>Upcoming Movies 2014</h3>
         <div class="upcoming-movies"></div>

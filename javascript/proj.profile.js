@@ -1,6 +1,5 @@
 ﻿proj.profile = {
     showPage: function (username) {
-        console.log(username);
         proj.profile.services.getUserInfo(username, proj.profile.renderer.displayUserInfo);
         proj.showPage("profile");
     },
@@ -44,7 +43,6 @@
     },
     renderer: {
         displayUserInfo: function (response) {
-            console.log(response);
             proj.profile.dom.profile_views_value.html(response.d.profileViews);
             proj.profile.dom.email_value.html(response.d.email);
             proj.profile.dom.real_name_value.html(response.d.name);

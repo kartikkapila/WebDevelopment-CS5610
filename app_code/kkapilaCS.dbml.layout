@@ -2,23 +2,23 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="kkapilaCS">
   <DataContextMoniker Name="/kkapilaCSDataContext" />
   <nestedChildShapes>
-    <classShape Id="22343483-682a-4ffd-9ff9-1bc9c855422e" absoluteBounds="5.25, 1.875, 2, 1.9631982421875">
-      <DataClassMoniker Name="/kkapilaCSDataContext/proj_like" />
-      <nestedChildShapes>
-        <elementListCompartment Id="293a2d97-0751-41d2-ab77-fd0fb756109c" absoluteBounds="5.265, 2.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="28734e1c-c656-45ea-b70b-dbb2a58a598c" absoluteBounds="2.25, 1, 2, 1.9631982421875">
+    <classShape Id="28734e1c-c656-45ea-b70b-dbb2a58a598c" absoluteBounds="0.5, 0.75, 2, 1.9631982421875">
       <DataClassMoniker Name="/kkapilaCSDataContext/proj_user" />
       <nestedChildShapes>
-        <elementListCompartment Id="fd7a1c13-67a8-42ef-b34f-94d322347b5d" absoluteBounds="2.265, 1.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fd7a1c13-67a8-42ef-b34f-94d322347b5d" absoluteBounds="0.51500000000000012, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.25 : 2.41909912109375); (5.25 : 2.41909912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="6cfe1738-4414-4f5f-a23f-e1f620242889" absoluteBounds="5.25, 1.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/kkapilaCSDataContext/proj_like" />
+      <nestedChildShapes>
+        <elementListCompartment Id="910a15ab-802b-4b0e-adb1-1972d19bc522" absoluteBounds="5.265, 1.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.91909912109375); (5.25 : 1.91909912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/kkapilaCSDataContext/proj_user/proj_user_proj_like" />
       <nodes>
         <classShapeMoniker Id="28734e1c-c656-45ea-b70b-dbb2a58a598c" />
-        <classShapeMoniker Id="22343483-682a-4ffd-9ff9-1bc9c855422e" />
+        <classShapeMoniker Id="6cfe1738-4414-4f5f-a23f-e1f620242889" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

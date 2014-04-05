@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FeedbackForm01.aspx.cs" Inherits="experiments_exp08_FeedbackForm" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 
@@ -6,6 +6,8 @@
 <head runat="server">
     <title>Feedback Form</title>
     <link rel="stylesheet" type ="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/feedback.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,15 +17,15 @@
             <textarea class="feedback"></textarea><br />
             <br />
             <p>This can be done using the following code</p>
-            <pre class="quotes">            var feedback_div = $(".feedback");
-            feedback_div.keypress(function (e) {
-                if (e.keyCode == 13) {
-                    var feedback = feedback_div.val();
-                    alert(feedback);
-                }
-            });
-        });
-            </pre>
+            <pre>
+var feedback_div = $(".feedback");
+feedback_div.keypress(function (e) {
+    if (e.keyCode == 13) {
+        var feedback = feedback_div.val();
+        alert(feedback);
+    }
+});
+</pre>
             <br />
             <p>Here, we first grab the textarea using its class name.</p>
             <p>We then use event handling, and when "return" is pressed,  we then grab the text inside the text area using the val function. 
@@ -35,19 +37,6 @@
     <script src="../../javascript/bootstrap.min.js"></script>
     <script>
         $(function () {
-
-            $(".main").css("padding-left", "150px")
-                      .css("padding-right", "150px")
-                      .css("width","100%")
-                      .css("margin", "auto");
-
-            $(".quotes").css("width", "600px");
-
-            $(".main .feedback")
-                .css("width", "100%")
-                .css("height", "100px")
-                .css("resize","none");
-
             var feedback_div = $(".feedback");
             feedback_div.keypress(function (e) {
                 if (e.keyCode == 13) {

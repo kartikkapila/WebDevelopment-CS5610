@@ -20,9 +20,8 @@
 
             proj.controller.dom.nav_profile.click(function () {
                 if (proj.state.currentUser.username == null) {
-                    alert('login to continue');
+                    proj.showPage("login");
                 } else {
-                    console.log(proj.state.currentUser.username)
                     proj.profile.showPage(proj.state.currentUser.username);
                 }
             });

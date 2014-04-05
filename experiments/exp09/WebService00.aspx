@@ -7,20 +7,24 @@
     <title></title>
     <link rel="stylesheet" type ="text/css" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" type ="text/css" href="../../css/home.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/webservices.css" />
+    <style>
+
+    </style>
 </head>
 <body>
     <div class="container">
         <h3>Movie Search Engine</h3>
         <p>In these set of experiments, we will get the information of movies using the rotten tomatoes api.</p>
         <p>Click on the botton, to get the information for Star Wars.</p>
-        <div class="search-bar" style="display:block;">
-             <button class="search-btn btn btn-primary" style="clear:right;">Search</button>
+        <div class="search-bar">
+             <button class="search-btn btn btn-primary">Search</button>
         </div>
         <div style="clear:both;"></div><br /><br />
         <div class ="movie-holder">
-            <div class="movie-presenter" style="display:table;">
-                <img class="movie-thumbnail" src="../../me1.jpg" style="height:100px;float:left;" />
-                <h3 class="movie-title" style="float:left;clear:right;">Demo Title</h3>
+            <div class="movie-presenter">
+                <img class="movie-thumbnail" src="../../images/me1.jpg" />
+                <h3 class="movie-title">Demo Title</h3>
            </div>
         </div>
         <div><br />

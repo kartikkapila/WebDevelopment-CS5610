@@ -25,5 +25,4 @@ public class UserTO {
         this.aboutMe = aboutMe;
         this.profileViews = profileViews;
     }
-
 }

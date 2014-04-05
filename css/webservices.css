@@ -1,0 +1,46 @@
+﻿@media (min-width:610px)
+{
+    .search
+    {
+        width:500px;
+    }
+}
+@media (max-width:609px)
+{
+    .search
+    {
+        width:auto;
+    }
+}
+.search-bar {
+    display:block;
+}
+.search {
+    float: left;
+    display: table;
+}
+
+.movie-presenter {
+    display:table;
+}
+.movie-thumbnail {
+    float:left;
+    height:100px;
+}
+.movie-title {
+    float:left;
+    clear:right;
+}
+.details-showers {
+    width: 500px;
+    height: 500px;
+    display: none;
+    float: right;
+}
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

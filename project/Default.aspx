@@ -9,9 +9,49 @@
     .page {
         display:none;
     }
+    .detail {
+        padding:20px;
+    }
+    .note,.message {
+        display:inline;
+    }
+    .note {
+        background-color: rgb(255, 0, 0);
+        color: rgb(255, 255, 255);
+        padding: 5px;
+        border-radius: 4px;
+    }
     .login-username,.login-password,.login-submit-btn {
+        width:100%;
+        height:30px;
+        margin-top:20px;
+    }
+    .movie-thumbnail {
+        height:389px;
+        width:263px;
+    }
+    .movie-title {
+        font-size:24px;
+        font-weight:500;
+    }
+    .movie-genre {
+        display: table;
+        border-radius: 3px;
+        font-size: 17px;
+        padding: 5px;
         margin-top:10px;
-        width:50%;
+        background-color: rgb(250, 219, 165);
+    }
+    .movie-overview {
+        margin-top:10px;
+    }
+    .movie-tagline {
+        font-size: 30px;
+        margin-top:10px;
+        color: rgb(184, 196, 135);
+    }
+    .write-review-action {
+        margin:10px;
     }
 </style>
 </head>
@@ -34,21 +74,23 @@
             <input class ="search-input form-control" type="text" placeholder="Search your favorite movie"/>
             <button class="search-btn btn btn-primary">Search</button>
             <button class="login-btn btn btn-danger">Login</button>
+            <button class="logout-btn btn btn-danger page">Logout</button>
         </div><br /><br />
         <!-- Search Results Area -->
         <div class="page results">
             <div class="search-results-holder row">
                 <div class="col-md-3">
-                    <img class="movie-thumbnail" src="#" style="height:300px;"/>
+                    <img class="movie-thumbnail" src="#"/>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-6" id="player" style="display:none;"></div>
+                <div class="col-md-4 movie-info"></div>
+                <div class="col-md-5" id="player" style="display:none;"></div>
             </div><br  />
             <h3>Movies You May Like</h3>
             <hr style="padding:0px;margin-bottom:0px;"/>
             <div class="similar-movies-holder"></div>
             <br />
              <div class="reviews-holder col-md-6" style="padding:0px;">
+                 <h3>Reviews</h3>
             </div>
         </div>
         <!-- Upcoming Movies -->
@@ -61,15 +103,21 @@
                 <span class="glyphicon glyphicon-chevron-right next-upcoming-movies" style="font-size:20px;cursor:pointer;opacity:0.8;"></span>
             </div>
         </div>
+        <!-- In Theatre Movies -->
+        <div class="in-theatre-movies home"></div>
         <!-- Details Area -->
         <div class="details-area page login">
             <div class="blank"></div>
             <div class="close">&times</div> 
             <div class="details-holder">            
                 <div class="detail">
-                    <input class="form-control login-username" type="text" placeholder="Enter Username"/>
-                    <input class="form-control login-password" type="password" placeholder="Enter Password"/>
-                    <button class="form-control  login-submit-btn">login</button>
+                    <input class="login-username" type="text" placeholder="Enter Username"/><br />
+                    <input class="login-password" type="password" placeholder="Enter Password"/><br />
+                    <button class="btn btn-info login-submit-btn">login</button><br /><br /><br /><br />
+                    <div class="note">Note:</div><h5 class=".message">For security reasons, we do not allow people to register on this website. If you need to test a
+                        functionality for which you need to login, please send me an email(kkapila@ccs.neu.edu) about your information and I shall
+                        provide you the credentials.
+                    </h5>
                 </div>
             </div>
         </div>
@@ -115,20 +163,36 @@
             </div>
             <hr />
         </div>
+        <!-- Reviews Page-->
+        <div class="page review">
+            <div class="blank"></div>
+            <div class="close">&times</div> 
+            <div class="details-holder">            
+               <div class="detail">
+                   <textarea class="review-area" style="width:100%;height:40%;resize:none;"></textarea>
+                   <button class="review-submit-btn btn btn-danger form-control" style="display:block;margin-top:20px;">submit</button>
+               </div>
+            </div>
+       </div>
     </div>
     <!-- Templates -->
     <div class="templates" style="display:none;">
         <img class="upcoming-movies-img templates" src="#" style="height:200px;display:none;"/>
         <!-- similar movies templates -->
         <img class="similar-movie-img templates" src="#" style="height:300px;margin-right:20px;margin-top:20px;"/>
+        <div class="suggestion-box templates" style="font-size:20px;"></div>
         <!-- reviews templates -->
-        <div class="critic templates" style="display:inline;color:#428BCA;"></div>
-        <div class="date templates" style="display:inline;margin-left:10px;"></div>
-        <div class="quote templates"></div>
-        <div class="publication templates"></div>
+        <div class="review-critic results templates" style="display:inline;color:#428BCA;"></div>
+        <div class="review-date results templates" style="display:inline;margin-left:10px;"></div>
+        <div class="review-quote results templates"></div>
+        <div class="review-publisher results templates"></div>
         <button class="like-btn btn-warning templates">like</button>
         <!-- details of the movie -->
-        <div class="genres btn btn-primary templates"></div>
+        <div class="movie-title results templates"></div>
+        <div class="movie-genre results templates"></div>
+        <div class="movie-overview results templates"></div>
+        <div class="movie-tagline results templates"></div>
+        <button class="write-review-action results templates btn btn-success">Write a Review</button>
     </div>
     <form id="form1" runat="server">
     </form>
@@ -140,6 +204,6 @@
     <script src="../javascript/proj.profile.js"></script>
     <script src="../javascript/proj.controller.js"></script>
     <script src="../javascript/proj.login.js"></script>
-
+    <script src="../javascript/proj.review.js"></script>
 </body>
 </html>
