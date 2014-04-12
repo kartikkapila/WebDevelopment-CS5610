@@ -4,6 +4,7 @@
         proj.login.controller.init();
     },
     showPage: function () {
+        $(".navbar.navbar-fixed-top").css('z-index', -4); // Had to do this for chrome..!
         proj.showPage("login");
     },
     dom: {
@@ -21,6 +22,7 @@
     controller: {
         init: function () {
             proj.login.dom.close.click(function () {
+                $(".navbar.navbar-fixed-top").css('z-index', 1038);
                 proj.showPage("home");
             });
             proj.login.dom.login_submit_btn.click(function () {
@@ -43,7 +45,8 @@
                 password:password
             }
             $.ajax({
-                url: "http://localhost:1316/MoviesWebService.asmx/checkUser",
+//              url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/checkUser",
+                url:"http://localhost:1316/MoviesWebService.asmx/checkUser",
                 data: JSON.stringify(param),
                 type: 'post',
                 contentType: 'application/json',
@@ -53,6 +56,7 @@
                         proj.home.dom.login_btn.addClass("page");
                         proj.home.dom.login_btn.removeClass("home results");
                         proj.home.dom.logout_btn.addClass("home results");
+                        $(".navbar.navbar-fixed-top").css('z-index', 1038);
                         proj.showPage('home');
                     } else {
                         alert('Invalid username and password');

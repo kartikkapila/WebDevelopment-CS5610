@@ -20,7 +20,7 @@
 
             proj.controller.dom.nav_profile.click(function () {
                 if (proj.state.currentUser.username == null) {
-                    proj.showPage("login");
+                    proj.login.showPage("login");
                 } else {
                     proj.profile.showPage(proj.state.currentUser.username);
                 }

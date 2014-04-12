@@ -22,13 +22,16 @@
         movie_genre: null,
         movie_overview: null,
         movie_tagline: null,
-        write_a_review:null,
+        write_a_review: null,
+        add_favorites_action:null,
         reviews_holder: null,
         review_critic: null,
         review_date: null,
         review_quote: null,
         review_publisher: null,
-    
+        rotten_tomatoes_reviews:null,
+        msqe_reviews: null,
+
         init: function () {
             proj.results.dom.movie_thumbnail = $(".movie-thumbnail");
             proj.results.dom.search_input = $(".search-input");
@@ -42,24 +45,36 @@
             proj.results.dom.movie_overview = $(".movie-overview").clone().removeClass("templates");
             proj.results.dom.movie_tagline = $(".movie-tagline").clone().removeClass("templates");
             proj.results.dom.write_a_review = $(".write-review-action").clone().removeClass("templates");
-
+            proj.results.dom.add_favorites_action = $(".add-favorites-action").clone().removeClass("templates");
 
             proj.results.dom.reviews_holder = $(".reviews-holder");
             proj.results.dom.review_critic = $(".review-critic").clone().removeClass("templates");
             proj.results.dom.review_date = $(".review-date").clone().removeClass("templates");
             proj.results.dom.review_quote = $(".review-quote").clone().removeClass("templates");
             proj.results.dom.review_publisher = $(".review-publisher").clone().removeClass("templates");
+
+            proj.results.dom.rotten_tomatoes_reviews = $(".rotten-tomatoes-reviews");
+            proj.results.dom.msqe_reviews = $(".MSQE-reviews");
         }
     },
     controller: {
         init: function () {
             proj.results.dom.write_a_review.click(function (event) {
                 if (proj.state.currentUser.username == null) {
-                    proj.showPage("login");
+                    proj.login.showPage("login");
                 } else {
-                    proj.review.showPage(proj.results.dom.write_a_review.attr('id'),"review");
+                    proj.review.showPage(proj.results.dom.write_a_review.attr('id'));
                 }
             });
+
+            proj.results.dom.add_favorites_action.click(function (event) {
+                if (proj.state.currentUser.username == null) {
+                    proj.login.showPage("login");
+                } else {
+                    proj.favorites.services.checkFavoritesAlreadyExists(proj.results.dom.add_favorites_action.attr('id'));
+                }
+            });
+
         },
 
         findMovieOnYouTubeById: function () {
@@ -90,7 +105,8 @@
         getMoviebyName: function (movieName, callback) {
             var params = {
                 apikey: "y89qq3t53gmyxjrna294v2jg",
-                q: movieName
+                q: movieName,
+                page_limit:1
             };
             $.ajax({
                 url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?",
@@ -146,6 +162,7 @@
                 success: callback
             });
         },
+
         getReviews: function (id, callback) {
             var params = {
                 apikey: "y89qq3t53gmyxjrna294v2jg"
@@ -203,7 +220,8 @@
             proj.results.dom.movie_genre.html(response.genres[0].name),
             proj.results.dom.movie_overview.html(response.overview),
             proj.results.dom.movie_tagline.html(response.tagline),
-            proj.results.dom.write_a_review.attr('id',response.imdb_id)
+            proj.results.dom.write_a_review.attr('id', response.imdb_id),
+            proj.results.dom.add_favorites_action.attr('id',response.imdb_id)
             );
         },
 

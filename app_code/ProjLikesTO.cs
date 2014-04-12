@@ -11,10 +11,6 @@ public class ProjLikesTO {
         set;
         get;
     }
-    public string critic {
-        set;
-        get;
-    }
     public string quote {
         set;
         get;
@@ -23,25 +19,14 @@ public class ProjLikesTO {
         set;
         get;
     }
-    public string isCriticAMember {
-        set;
-        get;
-    }
-    public string reviewOrLikes {
-        set;
-        get;
-    }
 
     public ProjLikesTO() {
 	}
 
-    public ProjLikesTO(string username, string critic, string quote, string imdbId, string isCriticAMember, string reviewOrLikes) {
+    public ProjLikesTO(string username, string quote, string imdbId) {
         this.username = username;
-        this.critic = critic;
         this.quote = quote;
         this.imdbId = imdbId;
-        this.isCriticAMember = isCriticAMember;
-        this.reviewOrLikes = reviewOrLikes;
     }
 
 }

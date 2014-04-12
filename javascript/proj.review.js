@@ -1,9 +1,11 @@
 ﻿proj.review = {
+
     init: function () {
         proj.review.dom.init();
         proj.review.controller.init();
     },
-    showPage:function(id) {
+    showPage: function (id) {
+        $(".navbar.navbar-fixed-top").css('z-index', -4);
         proj.showPage("review");
         proj.review.dom.review_submit_btn.attr('id',id);
     },
@@ -29,14 +31,12 @@
         saveReview: function (review) {
             var newReviewOrLike = {
                 username: proj.state.currentUser.username,
-                critic: proj.state.currentUser.username,
                 quote: review,
                 imdbId: proj.review.dom.review_submit_btn.attr("id"),
-                isCriticAMember: "true",
-                reviewOrLikes: "review"
             }
             $.ajax({
                 url: "http://localhost:1316/MoviesWebService.asmx/saveReview",
+                //                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/saveReview",
                 data: JSON.stringify({ 'newReviewOrLike': newReviewOrLike }),
                 type: 'post',
                 contentType: 'application/json',
@@ -44,10 +44,12 @@
                 success: function (response) {
                     if (response.d == true) {
                         alert('Your review has been stored');
+                        $(".navbar.navbar-fixed-top").css('z-index', 1038);
                         proj.showPage("results");
                     }
                 }
             });
+            
         }
     },
     renderer: {

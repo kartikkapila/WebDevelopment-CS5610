@@ -33,6 +33,9 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
     partial void Insertproj_user(proj_user instance);
     partial void Updateproj_user(proj_user instance);
     partial void Deleteproj_user(proj_user instance);
+    partial void InsertFavorite(Favorite instance);
+    partial void UpdateFavorite(Favorite instance);
+    partial void DeleteFavorite(Favorite instance);
     partial void Insertproj_like(proj_like instance);
     partial void Updateproj_like(proj_like instance);
     partial void Deleteproj_like(proj_like instance);
@@ -76,6 +79,14 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 			}
 		}
 		
+		public System.Data.Linq.Table<Favorite> Favorites
+		{
+			get
+			{
+				return this.GetTable<Favorite>();
+			}
+		}
+		
 		public System.Data.Linq.Table<proj_like> proj_likes
 		{
 			get
@@ -103,6 +114,8 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		
 		private int _profileViews;
 		
+		private EntitySet<Favorite> _Favorites;
+		
 		private EntitySet<proj_like> _proj_likes;
 		
     #region Extensibility Method Definitions
@@ -125,6 +138,7 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		
 		public proj_user()
 		{
+			this._Favorites = new EntitySet<Favorite>(new Action<Favorite>(this.attach_Favorites), new Action<Favorite>(this.detach_Favorites));
 			this._proj_likes = new EntitySet<proj_like>(new Action<proj_like>(this.attach_proj_likes), new Action<proj_like>(this.detach_proj_likes));
 			OnCreated();
 		}
@@ -249,6 +263,19 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="proj_user_Favorite", Storage="_Favorites", ThisKey="username", OtherKey="username")]
+		public EntitySet<Favorite> Favorites
+		{
+			get
+			{
+				return this._Favorites;
+			}
+			set
+			{
+				this._Favorites.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="proj_user_proj_like", Storage="_proj_likes", ThisKey="username", OtherKey="username")]
 		public EntitySet<proj_like> proj_likes
 		{
@@ -282,6 +309,18 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 			}
 		}
 		
+		private void attach_Favorites(Favorite entity)
+		{
+			this.SendPropertyChanging();
+			entity.proj_user = this;
+		}
+		
+		private void detach_Favorites(Favorite entity)
+		{
+			this.SendPropertyChanging();
+			entity.proj_user = null;
+		}
+		
 		private void attach_proj_likes(proj_like entity)
 		{
 			this.SendPropertyChanging();
@@ -295,6 +334,133 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Favorites")]
+	public partial class Favorite : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _username;
+		
+		private string _imdbId;
+		
+		private EntityRef<proj_user> _proj_user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnimdbIdChanging(string value);
+    partial void OnimdbIdChanged();
+    #endregion
+		
+		public Favorite()
+		{
+			this._proj_user = default(EntityRef<proj_user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					if (this._proj_user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imdbId", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string imdbId
+		{
+			get
+			{
+				return this._imdbId;
+			}
+			set
+			{
+				if ((this._imdbId != value))
+				{
+					this.OnimdbIdChanging(value);
+					this.SendPropertyChanging();
+					this._imdbId = value;
+					this.SendPropertyChanged("imdbId");
+					this.OnimdbIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="proj_user_Favorite", Storage="_proj_user", ThisKey="username", OtherKey="username", IsForeignKey=true)]
+		public proj_user proj_user
+		{
+			get
+			{
+				return this._proj_user.Entity;
+			}
+			set
+			{
+				proj_user previousValue = this._proj_user.Entity;
+				if (((previousValue != value) 
+							|| (this._proj_user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._proj_user.Entity = null;
+						previousValue.Favorites.Remove(this);
+					}
+					this._proj_user.Entity = value;
+					if ((value != null))
+					{
+						value.Favorites.Add(this);
+						this._username = value.username;
+					}
+					else
+					{
+						this._username = default(string);
+					}
+					this.SendPropertyChanged("proj_user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.proj_likes")]
 	public partial class proj_like : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -305,15 +471,9 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		
 		private string _username;
 		
-		private string _critic;
-		
 		private string _quote;
 		
 		private string _imdbId;
-		
-		private string _isCriticAMember;
-		
-		private string _reviewOrlikes;
 		
 		private EntityRef<proj_user> _proj_user;
 		
@@ -325,16 +485,10 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
     partial void OnIdChanged();
     partial void OnusernameChanging(string value);
     partial void OnusernameChanged();
-    partial void OncriticChanging(string value);
-    partial void OncriticChanged();
     partial void OnquoteChanging(string value);
     partial void OnquoteChanged();
     partial void OnimdbIdChanging(string value);
     partial void OnimdbIdChanged();
-    partial void OnisCriticAMemberChanging(string value);
-    partial void OnisCriticAMemberChanged();
-    partial void OnreviewOrlikesChanging(string value);
-    partial void OnreviewOrlikesChanged();
     #endregion
 		
 		public proj_like()
@@ -387,26 +541,6 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_critic", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string critic
-		{
-			get
-			{
-				return this._critic;
-			}
-			set
-			{
-				if ((this._critic != value))
-				{
-					this.OncriticChanging(value);
-					this.SendPropertyChanging();
-					this._critic = value;
-					this.SendPropertyChanged("critic");
-					this.OncriticChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quote", DbType="VarChar(5000) NOT NULL", CanBeNull=false)]
 		public string quote
 		{
@@ -443,46 +577,6 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 					this._imdbId = value;
 					this.SendPropertyChanged("imdbId");
 					this.OnimdbIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isCriticAMember", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string isCriticAMember
-		{
-			get
-			{
-				return this._isCriticAMember;
-			}
-			set
-			{
-				if ((this._isCriticAMember != value))
-				{
-					this.OnisCriticAMemberChanging(value);
-					this.SendPropertyChanging();
-					this._isCriticAMember = value;
-					this.SendPropertyChanged("isCriticAMember");
-					this.OnisCriticAMemberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reviewOrlikes", DbType="NChar(10)")]
-		public string reviewOrlikes
-		{
-			get
-			{
-				return this._reviewOrlikes;
-			}
-			set
-			{
-				if ((this._reviewOrlikes != value))
-				{
-					this.OnreviewOrlikesChanging(value);
-					this.SendPropertyChanging();
-					this._reviewOrlikes = value;
-					this.SendPropertyChanged("reviewOrlikes");
-					this.OnreviewOrlikesChanged();
 				}
 			}
 		}

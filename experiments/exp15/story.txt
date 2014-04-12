@@ -1,0 +1,5 @@
+LocalStorage00.aspx Storing in LocalStorage
+LocalStorage01.aspx Retrieving in LocalStorage
+LocalStorage02.aspx Storing data retrieved from web services
+LocalStorage03.aspx Retrieving data from rottentomatoes based on information stored in localStorage 
+story.txt story file

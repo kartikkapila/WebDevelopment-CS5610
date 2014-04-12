@@ -53,6 +53,27 @@
     .write-review-action {
         margin:10px;
     }
+    .upcoming-movies-title {
+        margin-top:0px;
+    }
+    .row {
+        margin:0px;
+    }
+    .col-md-4,.col-md-6 {
+        padding:0px;
+    }
+    @media(min-width:999px) {
+        .upcoming-movies-holder .upcoming-movie-area {
+            height: 480px;
+        }
+    }
+    .upcoming-movie-casts{
+        display:table;
+        padding:10px;
+        padding-right:0px;
+        background-color:rgb(250, 219, 165);
+        border-radius:4px;
+    }
 </style>
 </head>
 <body>
@@ -75,13 +96,34 @@
             <button class="search-btn btn btn-primary">Search</button>
             <button class="login-btn btn btn-danger">Login</button>
             <button class="logout-btn btn btn-danger page">Logout</button>
+            <h4 class ="user-username"></h4>
+        </div>
+        <!-- Upcoming Movies -->
+        <div class="upcoming-movies-holder row page home">
+            <h3 class="upcoming-movies-holder-title">Upcoming Movies</h3>
+            <hr />
+            <div class="row upcoming-movie-area">
+                <div class="upcoming-movies col-md-3"></div>
+                <div class="upcoming-movies-info col-md-8">
+                    <h3 class="upcoming-movies-title"></h3>
+                    <h4 class="upcoming-movies-release-date" style="color:#2A6496;"></h4>
+                    <pre class="upcoming-movies-synopsis"></pre>
+                    <h5 class="upcoming-movies-runtime"></h5>
+                    <div class="upcoming-movie-casts"></div>
+                </div>
+            </div>
+            <div class="row play-controls">
+                <button class="btn btn-warning previous-upcoming-movies" style="float:left;font-size:20px;cursor:pointer;opacity:0.8;">back</button>
+                <button class="btn btn-warning next-upcoming-movies" style="float:right;font-size:20px;cursor:pointer;opacity:0.8;">next</button>
+            </div>
         </div><br /><br />
         <!-- Search Results Area -->
-        <div class="page results">
+        <d class="page results">
             <div class="search-results-holder row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <img class="movie-thumbnail" src="#"/>
                 </div>
+                <div class="col-md-1"></div>
                 <div class="col-md-4 movie-info"></div>
                 <div class="col-md-5" id="player" style="display:none;"></div>
             </div><br  />
@@ -90,27 +132,28 @@
             <div class="similar-movies-holder"></div>
             <br />
              <div class="reviews-holder col-md-6" style="padding:0px;">
-                 <h3>Reviews</h3>
+                <h3>Reviews</h3>
+                <hr style="margin-bottom:0px;"/>
+                <div class="pagination-area">
+                    <ul class="nav nav-pills">
+                      <li class="active rotten-tomatoes-reviews"><a href="#">Rotten Tomatoes Reviews</a></li>
+                      <li class="MSQE-reviews"><a href="#">Registered Users Reviews</a></li>
+                    </ul>
+                </div>   
+                <hr style="margin-bottom:0px;"/>        
             </div>
-        </div>
-        <!-- Upcoming Movies -->
-        <div class="upcoming-movies-holder col-md-4 page home">
-            <h3 class="upcoming-movies-holder-title">Upcoming Movies</h3>
-            <hr />
-            <div class="upcoming-movies"></div>
-            <div class="col-md-2 play-controls">
-                <span class="glyphicon glyphicon-chevron-left previous-upcoming-movies" style="font-size:20px;cursor:pointer;opacity:0.8;"></span>       
-                <span class="glyphicon glyphicon-chevron-right next-upcoming-movies" style="font-size:20px;cursor:pointer;opacity:0.8;"></span>
-            </div>
-        </div>
+        </div><br />
         <!-- In Theatre Movies -->
-        <div class="in-theatre-movies home"></div>
-        <!-- Details Area -->
+        <div class="in-theatre-movies-holder page home">
+            <h3 class="in-theatre-movies-holder-title row">In Theatre Movies</h3>
+            <hr />
+        </div>
+        <!-- Login Area -->
         <div class="details-area page login">
             <div class="blank"></div>
-            <div class="close">&times</div> 
             <div class="details-holder">            
                 <div class="detail">
+                     <div class="close">&times</div> 
                     <input class="login-username" type="text" placeholder="Enter Username"/><br />
                     <input class="login-password" type="password" placeholder="Enter Password"/><br />
                     <button class="btn btn-info login-submit-btn">login</button><br /><br /><br /><br />
@@ -156,20 +199,20 @@
             <hr style="margin-bottom:0px;"/>
             <div class="pagination-area">
                 <ul class="nav nav-pills">
-                  <li class="active likes"><a href="#">Likes</a></li>
-                  <li class="reviews"><a href="#">Reviews</a></li>
-                  <li class="messages"><a href="#">Messages</a></li>
+                  <li class="active user-favorites"><a href="#">Favorites</a></li>
+                  <li class="user-reviews"><a href="#">Reviews</a></li>
                 </ul>
             </div>
-            <hr />
+            <hr style="margin-bottom:0px;"/>
+            <div class="displaying-profile-info"></div>
         </div>
         <!-- Reviews Page-->
         <div class="page review">
             <div class="blank"></div>
-            <div class="close">&times</div> 
             <div class="details-holder">            
                <div class="detail">
-                   <textarea class="review-area" style="width:100%;height:40%;resize:none;"></textarea>
+                   <div class="close">&times</div>
+                   <textarea class="review-area" style="width:100%;height:40%;resize:none;margin-top:10px;"></textarea>
                    <button class="review-submit-btn btn btn-danger form-control" style="display:block;margin-top:20px;">submit</button>
                </div>
             </div>
@@ -177,7 +220,9 @@
     </div>
     <!-- Templates -->
     <div class="templates" style="display:none;">
-        <img class="upcoming-movies-img templates" src="#" style="height:200px;display:none;"/>
+        <!-- upcomimg movies -->
+        <img class="upcoming-movies-img templates" src="#" style="height:325px;display:none;"/>
+        <img class="upcoming-movies-casts-img templates" src="#" style="margin-right:10px;width:80px;height:100px;"/>
         <!-- similar movies templates -->
         <img class="similar-movie-img templates" src="#" style="height:300px;margin-right:20px;margin-top:20px;"/>
         <div class="suggestion-box templates" style="font-size:20px;"></div>
@@ -192,7 +237,15 @@
         <div class="movie-genre results templates"></div>
         <div class="movie-overview results templates"></div>
         <div class="movie-tagline results templates"></div>
-        <button class="write-review-action results templates btn btn-success">Write a Review</button>
+        <button class="write-review-action results templates btn btn-success" style="margin-left:0px;">Write a Review</button>
+        <button class="add-favorites-action results templates btn btn-success" style="margin-left:15px;">Add to Favorites</button>
+        <!-- in theatre movies -->
+        <img class="in-theatre-movies-img templates" src="#" style="margin-right:20px;height:300px;width:200px;"/>
+        <!-- Movie Info in Profile -->
+        <img class="profile-movie-img templates" src="#" style="height:175px;border-radius: 20px; border: medium solid;margin-right:20px;margin-top:20px;"/>
+        <div class="a-review templates btn btn-danger btn-block"></div>
+        <pre class="profile-movie-quote templates" style="margin:10px;"></pre>
+        <a href="#" class="profile-reviews-more-info-link templates">more info</a>
     </div>
     <form id="form1" runat="server">
     </form>
@@ -205,5 +258,7 @@
     <script src="../javascript/proj.controller.js"></script>
     <script src="../javascript/proj.login.js"></script>
     <script src="../javascript/proj.review.js"></script>
+    <script src="../javascript/proj.favorites.js"></script>
+
 </body>
 </html>

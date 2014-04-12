@@ -15,24 +15,25 @@ using edu.neu.ccis.kkapila.kkapilaCS;
 public class LikesFinderWebService  : System.Web.Services.WebService {
 
     [WebMethod]
-    public List<LikesTO> getAllLikes() {
+    public List<ProjLikesTO> getAllLikes() {
         using(kkapilaCSDataContext db = new kkapilaCSDataContext()) {
             var result = from row in db.proj_likes select row;
-            List<LikesTO> listOfLikes = new List<LikesTO>();
+            List<ProjLikesTO> listOfLikes = new List<ProjLikesTO>();
             foreach(var oneRow in result) {
-                LikesTO newObject = new LikesTO(oneRow.username, oneRow.critic, oneRow.quote, oneRow.imdbId, oneRow.isCriticAMember);
+                ProjLikesTO newObject = new ProjLikesTO(oneRow.username, oneRow.quote, oneRow.imdbId);
                 listOfLikes.Add(newObject);
             }
             return listOfLikes;        
         }
     }
     [WebMethod]
-    public List<LikesTO> getAllLikesByUsername(string username) {
+    public List<ProjLikesTO> getAllLikesByUsername(string username)
+    {
         using (kkapilaCSDataContext db = new kkapilaCSDataContext()) {
             var result = from row in db.proj_likes where row.username == username select row;
-            List<LikesTO> listOfLikes = new List<LikesTO>();
+            List<ProjLikesTO> listOfLikes = new List<ProjLikesTO>();
             foreach (var oneRow in result) {
-                LikesTO newObject = new LikesTO(oneRow.username, oneRow.critic, oneRow.quote, oneRow.imdbId, oneRow.isCriticAMember);
+                ProjLikesTO newObject = new ProjLikesTO(oneRow.username, oneRow.quote, oneRow.imdbId);
                 listOfLikes.Add(newObject);
             }
             return listOfLikes;        

@@ -1,0 +1,32 @@
+﻿.container {
+    margin:10px;
+    padding:10px;
+}
+.key,.value,.submit-btn {
+    width:100%;
+}
+.title,h3 {
+    font-size:24px;
+    font-weight:500;
+}
+.critic-score {
+    background-color:#d3d3d3;
+    padding:2px;
+    display:table;
+}
+h4 {
+    font-weight:500;
+    font-size:16px;
+}
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+a {
+    text-decoration:none;
+    font-size:24px;
+    color:#428BCA;
+}

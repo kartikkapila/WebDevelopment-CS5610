@@ -22,7 +22,9 @@
         <div class="table container">
             <div class="tools-cell">
                 <h3>Experiments</h3>
-                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp14/story.txt">LINQ to SQL</a><h4>New</h4></div></li></ul>
+                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp15/story.txt">Local Storage</a><h4>New</h4></div></li></ul>
+                <hr />
+                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp14/story.txt">LINQ to SQL</a></div></li></ul>
                 <hr />
                 <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp13/story.txt">Login Experiments</a></div></li></ul>
                 <hr />

@@ -5,22 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Local Storage</title>
-    <style>
-        .container {
-            margin:10px;
-            padding:10px;
-        }
-        .key,.value,.submit-btn {
-            width:100%;
-        }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="../../css/localstorage.css" />
 </head>
 <body>
     <form id="form1" runat="server"></form>
     <div class="container">
+        <h3>Local Storage Experiments</h3>
+        <p>In this experiment, you will see that we can retrieve the value from the local storage, even if
+            we are currently on a different page.
+        </p>
+        <p>Please enter the key value you stored in the last experiment, to get the value associated with it.</p>
         <input class="key" type="text" placeholder="Enter Key"/><br /><br />
         <button class="submit-btn">Store</button>
+        <p>This is possible using the following code:</p>
+        <pre>
+var value = localStorage.getItem(key);
+        </pre>
+        <a href="../../fileview/Default.aspx?~/experiments/exp15/LocalStorage01.aspx">Source</a>
     </div>
     <script src ="../../jquery/jquery-2.1.0.min.js"></script>
     <script>
@@ -30,7 +31,7 @@
                 var value = localStorage.getItem(key);
                 alert(value);
             } else {
-                alert('Either the key or value was left blank');
+                alert('The key was left blank');
             }
         });
     </script>

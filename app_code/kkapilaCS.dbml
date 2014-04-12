@@ -8,18 +8,23 @@
       <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="aboutMe" Type="System.String" DbType="VarChar(5000) NOT NULL" CanBeNull="false" />
       <Column Name="profileViews" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="proj_user_Favorite" Member="Favorites" ThisKey="username" OtherKey="username" Type="Favorite" />
       <Association Name="proj_user_proj_like" Member="proj_likes" ThisKey="username" OtherKey="username" Type="proj_like" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Favorites" Member="Favorites">
+    <Type Name="Favorite">
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="imdbId" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="proj_user_Favorite" Member="proj_user" ThisKey="username" OtherKey="username" Type="proj_user" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.proj_likes" Member="proj_likes">
     <Type Name="proj_like">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="critic" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="quote" Type="System.String" DbType="VarChar(5000) NOT NULL" CanBeNull="false" />
       <Column Name="imdbId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="isCriticAMember" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="reviewOrlikes" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Association Name="proj_user_proj_like" Member="proj_user" ThisKey="username" OtherKey="username" Type="proj_user" IsForeignKey="true" />
     </Type>
   </Table>
