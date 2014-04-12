@@ -118,7 +118,7 @@
             </div>
         </div><br /><br />
         <!-- Search Results Area -->
-        <d class="page results">
+        <div class="page results">
             <div class="search-results-holder row">
                 <div class="col-md-2">
                     <img class="movie-thumbnail" src="#"/>
@@ -136,11 +136,12 @@
                 <hr style="margin-bottom:0px;"/>
                 <div class="pagination-area">
                     <ul class="nav nav-pills">
-                      <li class="active rotten-tomatoes-reviews"><a href="#">Rotten Tomatoes Reviews</a></li>
-                      <li class="MSQE-reviews"><a href="#">Registered Users Reviews</a></li>
+                      <li class="rotten-tomatoes-reviews"><a href="#">Rotten Tomatoes Reviews</a></li>
+                      <li class="active MSQE-reviews"><a href="#">Registered Users Reviews</a></li>
                     </ul>
                 </div>   
-                <hr style="margin-bottom:0px;"/>        
+                <hr style="margin-bottom:0px;"/><br />      
+                <div class="reviews-from-services"></div> 
             </div>
         </div><br />
         <!-- In Theatre Movies -->

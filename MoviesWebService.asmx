@@ -69,6 +69,28 @@ public class WebService  : System.Web.Services.WebService {
             return list;
         }
     }
+
+    [WebMethod]
+    public List<ProjLikesTO> getReviewsByImdbId(string imdbId)
+    {
+        using (kkapilaCSDataContext db = new kkapilaCSDataContext())
+        {
+            List<ProjLikesTO> list = new List<ProjLikesTO>();
+            var query = from row in db.proj_likes where imdbId == row.imdbId select row;
+            if (query.Count() != 0)
+            {
+                foreach (var row in query)
+                {
+                    ProjLikesTO newObject = new ProjLikesTO();
+                    newObject.username = row.username;
+                    newObject.quote = row.quote;
+                    newObject.imdbId = row.imdbId;
+                    list.Add(newObject);
+                }
+            }
+            return list;
+        }
+    }
     
     
     [WebMethod]

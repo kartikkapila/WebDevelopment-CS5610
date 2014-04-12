@@ -10,6 +10,7 @@
     },
     shared_variables: {
         movieId: null,
+        movieImdbId:null,
         videoId: null,
     },
     dom: {
@@ -31,6 +32,8 @@
         review_publisher: null,
         rotten_tomatoes_reviews:null,
         msqe_reviews: null,
+        reviews_from_services:null,
+
 
         init: function () {
             proj.results.dom.movie_thumbnail = $(".movie-thumbnail");
@@ -55,6 +58,7 @@
 
             proj.results.dom.rotten_tomatoes_reviews = $(".rotten-tomatoes-reviews");
             proj.results.dom.msqe_reviews = $(".MSQE-reviews");
+            proj.results.dom.reviews_from_services = $(".reviews-from-services");
         }
     },
     controller: {
@@ -72,6 +76,30 @@
                     proj.login.showPage("login");
                 } else {
                     proj.favorites.services.checkFavoritesAlreadyExists(proj.results.dom.add_favorites_action.attr('id'));
+                }
+            });
+
+            proj.results.dom.rotten_tomatoes_reviews.click(function () {
+                
+                if (!proj.results.dom.rotten_tomatoes_reviews.hasClass('active')) {
+                    proj.results.dom.rotten_tomatoes_reviews.addClass('active');
+                    proj.results.dom.msqe_reviews.removeClass('active');
+                    if (proj.results.shared_variables.movieId != null) {
+                        proj.results.services.getReviews(
+                            proj.results.shared_variables.movieId,
+                            proj.results.renderer.renderMovieReviews);
+                    }
+                }
+            });
+
+            proj.results.dom.msqe_reviews.click(function() {
+                if (!proj.results.dom.msqe_reviews.hasClass('active')) {
+                    proj.results.dom.msqe_reviews.addClass('active');
+                    proj.results.dom.rotten_tomatoes_reviews.removeClass('active');
+                    if (proj.results.shared_variables.movieImdbId != null)
+                        proj.results.services.getReviewsOfRegisteredUsers(
+                            proj.results.shared_variables.movieImdbId,
+                            proj.results.renderer.renderMovieReviewsOfRegisteredUsers);
                 }
             });
 
@@ -99,6 +127,16 @@
             if (typeof (window.youtubePlayer) != 'undefined')
                 window.youtubePlayer.loadVideoById(proj.results.shared_variables.videoId);
         },
+
+        decideReviewsToDisplay: function (id,imdbId) {
+            if (proj.results.dom.rotten_tomatoes_reviews.hasClass('active')) {
+                console.log('rotten tomatoes');
+                proj.results.services.getReviews(id, proj.results.renderer.renderMovieReviews);
+            } else {
+                console.log('registered users');
+                proj.results.services.getReviewsOfRegisteredUsers(imdbId, proj.results.renderer.renderMovieReviewsOfRegisteredUsers);
+            }
+        }
 
     },
     services: {
@@ -173,6 +211,19 @@
                 dataType: "jsonp",
                 success: callback
             });
+        },
+
+        getReviewsOfRegisteredUsers: function (id, callback) {
+            var params = {
+                imdbId : id
+            }
+            $.ajax({
+                url: "http://localhost:1316/MoviesWebService.asmx/getReviewsByImdbId",
+                data: JSON.stringify(params),
+                type: 'post',
+                contentType: 'application/json',
+                success: callback
+            });
         }
     },
 
@@ -181,11 +232,17 @@
             if (typeof (response.movies) == 'undefined') {
                 proj.results.dom.movie_thumbnail.attr('src', response.posters.original).attr('id', "tt" + response.alternate_ids.imdb).fadeIn(700, "swing");
                 proj.results.shared_variables.movieId = response.id;
+                proj.results.shared_variables.movieImdbId = "tt" + response.alternate_ids.imdb;
             } else {
                 proj.results.dom.movie_thumbnail.attr("src", response.movies[0].posters.original).attr('id', "tt" + response.movies[0].alternate_ids.imdb).fadeIn(700, "swing");
                 proj.results.shared_variables.movieId = response.movies[0].id;
+                proj.results.shared_variables.movieImdbId = "tt" + response.movies[0].alternate_ids.imdb;
+
                 proj.results.services.searchMovieInfo("tt" + response.movies[0].alternate_ids.imdb, proj.results.renderer.renderMovieInfo);
-                proj.results.services.getReviews(response.movies[0].id, proj.results.renderer.renderMovieReviews);
+                proj.results.controller.decideReviewsToDisplay(
+                    proj.results.shared_variables.movieId,
+                    proj.results.shared_variables.movieImdbId
+                    );
             }
             if (proj.results.shared_variables.movieId != null) {
                 proj.results.services.getSimilarMoviesbyId(proj.results.shared_variables.movieId, proj.results.renderer.renderSimilarMovies);
@@ -226,9 +283,10 @@
         },
 
         renderMovieReviews: function (response) {
+            proj.results.dom.reviews_from_services.empty();
             for (var i = 0; i < response.reviews.length; i++) {
                 if (response.reviews[i].critic != "") {
-                    proj.results.dom.reviews_holder.append(
+                    proj.results.dom.reviews_from_services.append(
                         proj.results.dom.review_critic.clone().html(response.reviews[i].critic),
                         proj.results.dom.review_date.clone().html(response.reviews[i].date),
                         "<br />",
@@ -237,6 +295,17 @@
                         "<br />", "<br />");
                 }
             }
+        },
+
+        renderMovieReviewsOfRegisteredUsers: function (response) {
+            proj.results.dom.reviews_from_services.empty();
+            for (var i = 0; i < response.d.length; i++) {
+                proj.results.dom.reviews_from_services.append(
+                    proj.results.dom.review_critic.clone().html(response.d[i].username),
+                    proj.results.dom.review_quote.clone().html(response.d[i].quote),
+                    "<br>");
+            }
+            console.log(response);
         }
     }
 };
