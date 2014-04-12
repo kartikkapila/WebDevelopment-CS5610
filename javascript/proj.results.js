@@ -64,6 +64,9 @@
     controller: {
         init: function () {
             proj.results.dom.write_a_review.click(function (event) {
+                if (window.youtubePlayer) {
+                    window.youtubePlayer.stopVideo();
+                }
                 if (proj.state.currentUser.username == null) {
                     proj.login.showPage("login");
                 } else {
@@ -136,6 +139,11 @@
                 console.log('registered users');
                 proj.results.services.getReviewsOfRegisteredUsers(imdbId, proj.results.renderer.renderMovieReviewsOfRegisteredUsers);
             }
+        },
+
+        handleUsernameClicked: function (event) {
+            window.youtubePlayer.stopVideo();
+            proj.profile.showPage(event.currentTarget.id);
         }
 
     },
@@ -300,12 +308,23 @@
         renderMovieReviewsOfRegisteredUsers: function (response) {
             proj.results.dom.reviews_from_services.empty();
             for (var i = 0; i < response.d.length; i++) {
-                proj.results.dom.reviews_from_services.append(
-                    proj.results.dom.review_critic.clone().html(response.d[i].username),
-                    proj.results.dom.review_quote.clone().html(response.d[i].quote),
-                    "<br>");
+                if (response.d[i].username == proj.state.currentUser.username) {
+                    proj.results.dom.reviews_from_services.append(
+                        proj.results.dom.review_critic.clone().html(response.d[i].username),
+                        proj.results.dom.review_quote.clone().html(response.d[i].quote),
+                        "<br>");
+
+                } else {
+                    proj.results.dom.reviews_from_services.append(
+                        proj.results.dom.review_critic.clone()
+                        .html("<u>" + response.d[i].username + "</u>")
+                        .css('cursor','pointer')
+                        .attr('id',response.d[i].username)
+                        .on('click',proj.results.controller.handleUsernameClicked),
+                        proj.results.dom.review_quote.clone().html(response.d[i].quote),
+                        "<br>");
+                }
             }
-            console.log(response);
         }
     }
 };

@@ -158,7 +158,6 @@
         },
 
         renderFavoriteMovie: function (response) {
-            console.log(response);
             proj.profile.dom.profile_movie_img
                 .attr('src', "http://image.tmdb.org/t/p/w300" + response.poster_path)
                 .attr('id',response.imdb_id);
