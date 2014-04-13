@@ -99,7 +99,7 @@
             proj.home.dom.login_btn.removeClass("page");
             proj.home.dom.login_btn.addClass("page home results");
             proj.home.dom.logout_btn.removeClass("home results");
-            proj.showPage("home");
+            proj.showPage(proj.state.currentPage);
         },
         // upcoming movies clicked action
         handleUpcomingMoviesClicked: function(event) {

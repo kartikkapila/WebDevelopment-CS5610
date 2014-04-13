@@ -7,6 +7,7 @@ var proj = {
         currentUser: {
             username:null
         },
+        previousPage:null,
         currentPage:"home"
     },
 
@@ -22,6 +23,7 @@ var proj = {
     showPage: function (pageName) {
         $(".page").hide();
         $(".page." + pageName).show();
+        this.state.previousPage = this.state.currentPage
         this.state.currentPage = pageName;
     }
 }

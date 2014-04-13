@@ -64,7 +64,7 @@
     controller: {
         init: function () {
             proj.results.dom.write_a_review.click(function (event) {
-                if (window.youtubePlayer) {
+                if (typeof (window.youtubePlayer) != undefined) {
                     window.youtubePlayer.stopVideo();
                 }
                 if (proj.state.currentUser.username == null) {
@@ -142,6 +142,7 @@
         },
 
         handleUsernameClicked: function (event) {
+            console.log('problem here??');
             window.youtubePlayer.stopVideo();
             proj.profile.showPage(event.currentTarget.id);
         }
