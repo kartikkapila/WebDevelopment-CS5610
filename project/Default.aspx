@@ -6,74 +6,6 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/project.css" />
 <style>
-    .page {
-        display:none;
-    }
-    .detail {
-        padding:20px;
-    }
-    .note,.message {
-        display:inline;
-    }
-    .note {
-        background-color: rgb(255, 0, 0);
-        color: rgb(255, 255, 255);
-        padding: 5px;
-        border-radius: 4px;
-    }
-    .login-username,.login-password,.login-submit-btn {
-        width:100%;
-        height:30px;
-        margin-top:20px;
-    }
-    .movie-thumbnail {
-        height:389px;
-        width:263px;
-    }
-    .movie-title {
-        font-size:24px;
-        font-weight:500;
-    }
-    .movie-genre {
-        display: table;
-        border-radius: 3px;
-        font-size: 17px;
-        padding: 5px;
-        margin-top:10px;
-        background-color: rgb(250, 219, 165);
-    }
-    .movie-overview {
-        margin-top:10px;
-    }
-    .movie-tagline {
-        font-size: 30px;
-        margin-top:10px;
-        color: rgb(184, 196, 135);
-    }
-    .write-review-action {
-        margin:10px;
-    }
-    .upcoming-movies-title {
-        margin-top:0px;
-    }
-    .row {
-        margin:0px;
-    }
-    .col-md-4,.col-md-6 {
-        padding:0px;
-    }
-    @media(min-width:999px) {
-        .upcoming-movies-holder .upcoming-movie-area {
-            height: 480px;
-        }
-    }
-    .upcoming-movie-casts{
-        display:table;
-        padding:10px;
-        padding-right:0px;
-        background-color:rgb(250, 219, 165);
-        border-radius:4px;
-    }
 </style>
 </head>
 <body>
@@ -91,12 +23,11 @@
     <br /><br /><br />
     <div class="main container">
         <!-- Search Bar -->
-        <div class="page home results">
+        <div class="page home results search-bar">
             <input class ="search-input form-control" type="text" placeholder="Search your favorite movie"/>
             <button class="search-btn btn btn-primary">Search</button>
             <button class="login-btn btn btn-danger">Login</button>
             <button class="logout-btn btn btn-danger page">Logout</button>
-            <h4 class ="user-username"></h4>
         </div>
         <!-- Upcoming Movies -->
         <div class="upcoming-movies-holder row page home">
@@ -106,17 +37,17 @@
                 <div class="upcoming-movies col-md-3"></div>
                 <div class="upcoming-movies-info col-md-8">
                     <h3 class="upcoming-movies-title"></h3>
-                    <h4 class="upcoming-movies-release-date" style="color:#2A6496;"></h4>
+                    <h4 class="upcoming-movies-release-date"></h4>
                     <pre class="upcoming-movies-synopsis"></pre>
                     <h5 class="upcoming-movies-runtime"></h5>
                     <div class="upcoming-movie-casts"></div>
                 </div>
             </div>
             <div class="row play-controls">
-                <button class="btn btn-warning previous-upcoming-movies" style="float:left;font-size:20px;cursor:pointer;opacity:0.8;">back</button>
-                <button class="btn btn-warning next-upcoming-movies" style="float:right;font-size:20px;cursor:pointer;opacity:0.8;">next</button>
+                <button class="btn btn-success previous-upcoming-movies">back</button>
+                <button class="btn btn-success next-upcoming-movies">next</button>
             </div>
-        </div><br /><br />
+        </div>
         <!-- Search Results Area -->
         <div class="page results">
             <div class="search-results-holder row">
@@ -128,22 +59,22 @@
                 <div class="col-md-5" id="player" style="display:none;"></div>
             </div><br  />
             <h3>Movies You May Like</h3>
-            <hr style="padding:0px;margin-bottom:0px;"/>
+            <hr />
             <div class="similar-movies-holder"></div>
             <br />
              <div class="reviews-holder col-md-6" style="padding:0px;">
                 <h3>Reviews</h3>
-                <hr style="margin-bottom:0px;"/>
+                <hr />
                 <div class="pagination-area">
                     <ul class="nav nav-pills">
                       <li class="rotten-tomatoes-reviews"><a href="#">Rotten Tomatoes Reviews</a></li>
                       <li class="active MSQE-reviews"><a href="#">Registered Users Reviews</a></li>
                     </ul>
                 </div>   
-                <hr style="margin-bottom:0px;"/><br />      
+                <hr /><br />      
                 <div class="reviews-from-services"></div> 
             </div>
-        </div><br />
+        </div>
         <!-- In Theatre Movies -->
         <div class="in-theatre-movies-holder page home">
             <h3 class="in-theatre-movies-holder-title row">In Theatre Movies</h3>
@@ -168,7 +99,7 @@
         <!-- Profile Page -->
         <div class="profile-page page profile" style="display:none;">
             <h3 class="profile-page-h3">Profile</h3>
-            <hr style="margin-bottom:0px;"/>
+            <hr />
             <div class="btn-toolbar">
             <h4 class="edit" style="cursor:pointer;">edit</h4>
             </div>
@@ -197,14 +128,14 @@
                 </div>
             </div>
             <br />
-            <hr style="margin-bottom:0px;"/>
+            <hr />
             <div class="pagination-area">
                 <ul class="nav nav-pills">
                   <li class="active user-favorites"><a href="#">Favorites</a></li>
                   <li class="user-reviews"><a href="#">Reviews</a></li>
                 </ul>
             </div>
-            <hr style="margin-bottom:0px;"/>
+            <hr />
             <div class="displaying-profile-info"></div>
         </div>
         <!-- Reviews Page-->
@@ -222,8 +153,10 @@
     <!-- Templates -->
     <div class="templates" style="display:none;">
         <!-- upcomimg movies -->
-        <img class="upcoming-movies-img templates" src="#" style="height:325px;display:none;"/>
-        <img class="upcoming-movies-casts-img templates" src="#" style="margin-right:10px;width:80px;height:100px;"/>
+        <img class="upcoming-movies-img templates" src="#" />
+        <img class="upcoming-movies-casts-img templates" src="#" />
+        <!-- in theatre movies -->
+        <img class="in-theatre-movies-img templates" src="#" />
         <!-- similar movies templates -->
         <img class="similar-movie-img templates" src="#" style="height:300px;margin-right:20px;margin-top:20px;"/>
         <div class="suggestion-box templates" style="font-size:20px;"></div>
@@ -240,8 +173,6 @@
         <div class="movie-tagline results templates"></div>
         <button class="write-review-action results templates btn btn-success" style="margin-left:0px;">Write a Review</button>
         <button class="add-favorites-action results templates btn btn-success" style="margin-left:15px;">Add to Favorites</button>
-        <!-- in theatre movies -->
-        <img class="in-theatre-movies-img templates" src="#" style="margin-right:20px;height:300px;width:200px;"/>
         <!-- Movie Info in Profile -->
         <img class="profile-movie-img templates" src="#" style="height:175px;border-radius: 20px; border: medium solid;margin-right:20px;margin-top:20px;"/>
         <div class="a-review templates btn btn-danger btn-block"></div>

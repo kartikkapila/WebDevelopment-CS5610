@@ -1,19 +1,24 @@
-﻿
+﻿/*
+    In built tags
+*/
 hr {
     margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
 }
 
-@media(min-width:500px) {
-    .detail {
-        width:500px;
-    } 
+/* search area*/
+
+.search-bar {
+    display:table;
+    margin-top:10px;
 }
-.detail {
-    position: relative;
-    z-index: 10002;
-    background: white;
-    margin: auto;
+
+.search-btn, .search-input {
+    display:inline;
 }
+
+
 @media (min-width:767px) {
     .search-bar {
         width:600px;
@@ -26,7 +31,7 @@ hr {
         width:15%;
         margin-left:10px;
     }
-    .login-btn {
+    .login-btn, .logout-btn {
         width:10%;
         margin-left:10px;
     }
@@ -48,26 +53,86 @@ hr {
         width:100%;
     }
 }
+/*end search area*/
 
+/*upcoming movies area*/
+
+
+@media(min-width:999px) {
+    .upcoming-movies-holder .upcoming-movie-area {
+        height: 450px;
+    }
+}
+
+.upcoming-movies {
+    display:table;
+}
+.upcoming-movies img {
+    border:5px solid;
+    border-radius:4px;
+    height:325px;
+    display:none;
+}
 @media (max-width:401px) {
     .upcoming-movies img {
         width: 100%;
     }
 }
 
-.search-bar {
-    display:table;
-    margin-top:10px;
-}
-.search-input {
-    display:inline;
-}
-.search-btn {
-    display:inline;
+.upcoming-movies-title {
+    margin-top:0px;
 }
 
-.play-controls {
-    padding:0px;
+.upcoming-movies-release-date {
+    color:#2A6496;
+}
+.upcoming-movie-casts{
+    display:table;
+    padding-right:0px;
+    border-radius:4px;
+}
+
+.upcoming-movies-casts-img {
+    padding:10px;
+    margin-top:10px;
+    margin-right: 10px;
+    width: 80px;
+    height: 100px;
+    background-color:black;
+    border-radius:4px;
+}
+.previous-upcoming-movies {
+    float:left;
+    margin:10px;
+}
+
+.next-upcoming-movies {
+   float:right;
+   margin:10px;
+}
+/*end upcoming movies area*/
+
+/*in theater movies*/
+.in-theatre-movies-img {
+    margin-top: 10px;
+    margin-right: 20px;
+    height: 150px;
+    width: 100px;
+    border-radius: 4px;
+    border: medium solid;
+}
+
+
+@media(min-width:500px) {
+    .detail {
+        width:500px;
+    } 
+}
+.detail {
+    position: relative;
+    z-index: 10002;
+    background: white;
+    margin: auto;
 }
 
 .blank {
@@ -94,6 +159,58 @@ hr {
     left: 0%;
 }
 
-.upcoming-movies {
-    display:table;
-}
+
+
+    .page {
+        display:none;
+    }
+    .detail {
+        padding:20px;
+    }
+    .note,.message {
+        display:inline;
+    }
+    .note {
+        background-color: rgb(255, 0, 0);
+        color: rgb(255, 255, 255);
+        padding: 5px;
+        border-radius: 4px;
+    }
+    .login-username,.login-password,.login-submit-btn {
+        width:100%;
+        height:30px;
+        margin-top:20px;
+    }
+    .movie-thumbnail {
+        height:389px;
+        width:263px;
+    }
+    .movie-title {
+        font-size:24px;
+        font-weight:500;
+    }
+    .movie-genre {
+        display: table;
+        border-radius: 3px;
+        font-size: 17px;
+        padding: 5px;
+        margin-top:10px;
+        background-color: rgb(250, 219, 165);
+    }
+    .movie-overview {
+        margin-top:10px;
+    }
+    .movie-tagline {
+        font-size: 30px;
+        margin-top:10px;
+        color: rgb(184, 196, 135);
+    }
+    .write-review-action {
+        margin:10px;
+    }
+    .row {
+        margin:0px;
+    }
+    .col-md-4,.col-md-6 {
+        padding:0px;
+    }
