@@ -5,8 +5,6 @@
     <title>Movie Review Search Engine</title>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/project.css" />
-<style>
-</style>
 </head>
 <body>
     <!--Navigation -->
@@ -32,7 +30,7 @@
         <!-- Upcoming Movies -->
         <div class="upcoming-movies-holder row page home">
             <h3 class="upcoming-movies-holder-title">Upcoming Movies</h3>
-            <hr />
+            <hr /><br />
             <div class="row upcoming-movie-area">
                 <div class="upcoming-movies col-md-3"></div>
                 <div class="upcoming-movies-info col-md-8">
@@ -46,33 +44,6 @@
             <div class="row play-controls">
                 <button class="btn btn-success previous-upcoming-movies">back</button>
                 <button class="btn btn-success next-upcoming-movies">next</button>
-            </div>
-        </div>
-        <!-- Search Results Area -->
-        <div class="page results">
-            <div class="search-results-holder row">
-                <div class="col-md-2">
-                    <img class="movie-thumbnail" src="#"/>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-4 movie-info"></div>
-                <div class="col-md-5" id="player" style="display:none;"></div>
-            </div><br  />
-            <h3>Movies You May Like</h3>
-            <hr />
-            <div class="similar-movies-holder"></div>
-            <br />
-             <div class="reviews-holder col-md-6" style="padding:0px;">
-                <h3>Reviews</h3>
-                <hr />
-                <div class="pagination-area">
-                    <ul class="nav nav-pills">
-                      <li class="rotten-tomatoes-reviews"><a href="#">Rotten Tomatoes Reviews</a></li>
-                      <li class="active MSQE-reviews"><a href="#">Registered Users Reviews</a></li>
-                    </ul>
-                </div>   
-                <hr /><br />      
-                <div class="reviews-from-services"></div> 
             </div>
         </div>
         <!-- In Theatre Movies -->
@@ -89,38 +60,32 @@
                     <input class="login-username" type="text" placeholder="Enter Username"/><br />
                     <input class="login-password" type="password" placeholder="Enter Password"/><br />
                     <button class="btn btn-info login-submit-btn">login</button><br /><br /><br /><br />
-                    <div class="note">Note:</div><h5 class=".message">For security reasons, we do not allow people to register on this website. If you need to test a
+                    <div class="note">Note:</div><h5 class="message">For security reasons, we do not allow people to register on this website. If you need to test a
                         functionality for which you need to login, please send me an email(kkapila@ccs.neu.edu) about your information and I shall
-                        provide you the credentials.
-                    </h5>
+                        provide you the credentials.</h5>
                 </div>
             </div>
         </div>
         <!-- Profile Page -->
-        <div class="profile-page page profile" style="display:none;">
-            <h3 class="profile-page-h3">Profile</h3>
-            <hr />
+        <div class="profile-page page profile">
+            <h3 class="profile-page-h3">Profile</h3><hr />
             <div class="btn-toolbar">
-            <h4 class="edit" style="cursor:pointer;">edit</h4>
-            </div>
-            <hr />
+                <h4 class="edit">edit</h4>
+            </div><hr />
+            <br />
             <div class="row">
                 <div class="col-md-3">
-                    <img class ="profile-pic" src="../images/profile-pic-default.png" style="height:200px;" />
+                    <img class ="profile-pic" src="../images/profile-pic-default.png" />
                 </div>
                 <div class="col-md-3"">
                     <br />
-                    <h5 class="member-since" style="display:inline;">member since:</h5>
-                    <h5 class="member-since-value" style="display:inline;">10days</h5>
+                    <h5 class="member-since">member since:</h5><h5 class="member-since-value">10days</h5>
                     <br /><br />
-                    <h5 class="profile-views" style="display:inline;">profile views:</h5>
-                    <h5 class="profile-views-value" style="display:inline;">110</h5>
+                    <h5 class="profile-views">profile views:</h5><h5 class="profile-views-value">110</h5>
                     <br /><br />
-                    <h5 class="email" style="display:inline;">email:</h5>
-                    <h5 class="email-value" style="display:inline;">xyz@hotmail.com</h5>
+                    <h5 class="email">email:</h5><h5 class="email-value">xyz@hotmail.com</h5>
                     <br /><br />
-                    <h5 class="real-name" style="display:inline;">real name:</h5>
-                    <h5 class="real-name-value" style="display:inline;">kartik</h5>
+                    <h5 class="real-name">real name:</h5><h5 class="real-name-value">kartik</h5>
                 </div>
                 <div class="col-md-5 about-me-value">
                     <br />
@@ -138,31 +103,63 @@
             <hr />
             <div class="displaying-profile-info"></div>
         </div>
+        <!-- Search Results Area -->
+        <div class="page results"><br />
+            <div class="search-results-holder row">
+                <div class="col-md-2">
+                    <img class="movie-thumbnail" src="#"/>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4 movie-info"></div>
+                <div class="col-md-5" id="player"></div>
+            </div><br />
+            <h3>Movies You May Like</h3>
+            <hr />
+            <div class="similar-movies-holder"></div>
+            <br />
+             <div class="reviews-holder col-md-6">
+                <h3>Reviews</h3>
+                <hr />
+                <div class="pagination-area">
+                    <ul class="nav nav-pills">
+                      <li class="rotten-tomatoes-reviews"><a href="#">Rotten Tomatoes Reviews</a></li>
+                      <li class="active MSQE-reviews"><a href="#">Registered Users Reviews</a></li>
+                    </ul>
+                </div>   
+                <hr /><br />      
+                <div class="reviews-from-services"></div> 
+            </div>
+        </div>
         <!-- Reviews Page-->
         <div class="page review">
             <div class="blank"></div>
             <div class="details-holder">            
                <div class="detail">
                    <div class="close">&times</div>
-                   <textarea class="review-area" style="width:100%;height:40%;resize:none;margin-top:10px;"></textarea>
-                   <button class="review-submit-btn btn btn-danger form-control" style="display:block;margin-top:20px;">submit</button>
+                   <textarea class="review-area"></textarea>
+                   <button class="review-submit-btn btn btn-danger form-control">submit</button>
                </div>
             </div>
        </div>
     </div>
     <!-- Templates -->
-    <div class="templates" style="display:none;">
+    <div class="templates">
         <!-- upcomimg movies -->
         <img class="upcoming-movies-img templates" src="#" />
         <img class="upcoming-movies-casts-img templates" src="#" />
         <!-- in theatre movies -->
         <img class="in-theatre-movies-img templates" src="#" />
+        <!-- Movie Info in Profile -->
+        <img class="profile-movie-img templates" src="#" />
+        <div class="a-review btn btn-danger btn-block templates"></div>
+        <pre class="profile-movie-quote templates"></pre>
+        <a href="#" class="profile-reviews-more-info-link templates">more info</a>
         <!-- similar movies templates -->
-        <img class="similar-movie-img templates" src="#" style="height:300px;margin-right:20px;margin-top:20px;"/>
-        <div class="suggestion-box templates" style="font-size:20px;"></div>
+        <img class="similar-movie-img templates" src="#" />
+        <div class="suggestion-box templates"></div>
         <!-- reviews templates -->
-        <div class="review-critic results templates" style="display:inline;color:#428BCA;"></div>
-        <div class="review-date results templates" style="display:inline;margin-left:10px;"></div>
+        <div class="review-critic results templates"></div>
+        <div class="review-date results templates"></div>
         <div class="review-quote results templates"></div>
         <div class="review-publisher results templates"></div>
         <button class="like-btn btn-warning templates">like</button>
@@ -171,13 +168,8 @@
         <div class="movie-genre results templates"></div>
         <div class="movie-overview results templates"></div>
         <div class="movie-tagline results templates"></div>
-        <button class="write-review-action results templates btn btn-success" style="margin-left:0px;">Write a Review</button>
-        <button class="add-favorites-action results templates btn btn-success" style="margin-left:15px;">Add to Favorites</button>
-        <!-- Movie Info in Profile -->
-        <img class="profile-movie-img templates" src="#" style="height:175px;border-radius: 20px; border: medium solid;margin-right:20px;margin-top:20px;"/>
-        <div class="a-review templates btn btn-danger btn-block"></div>
-        <pre class="profile-movie-quote templates" style="margin:10px;"></pre>
-        <a href="#" class="profile-reviews-more-info-link templates">more info</a>
+        <button class="write-review-action results btn btn-success templates">Write a Review</button>
+        <button class="add-favorites-action results btn btn-success templates">Add to Favorites</button>
     </div>
     <form id="form1" runat="server">
     </form>
@@ -191,6 +183,5 @@
     <script src="../javascript/proj.login.js"></script>
     <script src="../javascript/proj.review.js"></script>
     <script src="../javascript/proj.favorites.js"></script>
-
 </body>
 </html>

@@ -7,6 +7,18 @@ hr {
     padding:0px;
 }
 
+.page, .templates {
+    display:none;
+}
+.row {
+    margin:0px;
+}
+.col-md-4,.col-md-6 {
+    padding:0px;
+}
+
+
+
 /* search area*/
 
 .search-bar {
@@ -72,6 +84,7 @@ hr {
     border-radius:4px;
     height:325px;
     display:none;
+    cursor:pointer;
 }
 @media (max-width:401px) {
     .upcoming-movies img {
@@ -120,20 +133,12 @@ hr {
     width: 100px;
     border-radius: 4px;
     border: medium solid;
+    cursor:pointer;
 }
 
+/*end in theater movies*/
 
-@media(min-width:500px) {
-    .detail {
-        width:500px;
-    } 
-}
-.detail {
-    position: relative;
-    z-index: 10002;
-    background: white;
-    margin: auto;
-}
+/* login */
 
 .blank {
     position:fixed;
@@ -159,58 +164,144 @@ hr {
     left: 0%;
 }
 
+.detail {
+    position: relative;
+    z-index: 10002;
+    background: white;
+    margin: auto;
+}
 
-
-    .page {
-        display:none;
-    }
+@media(min-width:500px) {
     .detail {
-        padding:20px;
-    }
-    .note,.message {
-        display:inline;
-    }
-    .note {
-        background-color: rgb(255, 0, 0);
-        color: rgb(255, 255, 255);
-        padding: 5px;
-        border-radius: 4px;
-    }
-    .login-username,.login-password,.login-submit-btn {
-        width:100%;
-        height:30px;
-        margin-top:20px;
-    }
-    .movie-thumbnail {
-        height:389px;
-        width:263px;
-    }
-    .movie-title {
-        font-size:24px;
-        font-weight:500;
-    }
-    .movie-genre {
-        display: table;
-        border-radius: 3px;
-        font-size: 17px;
-        padding: 5px;
-        margin-top:10px;
-        background-color: rgb(250, 219, 165);
-    }
-    .movie-overview {
-        margin-top:10px;
-    }
-    .movie-tagline {
-        font-size: 30px;
-        margin-top:10px;
-        color: rgb(184, 196, 135);
-    }
-    .write-review-action {
-        margin:10px;
-    }
-    .row {
-        margin:0px;
-    }
-    .col-md-4,.col-md-6 {
-        padding:0px;
-    }
+        width:500px;
+    } 
+}
+
+.detail {
+    padding:20px;
+}
+
+.note,.message {
+    display:inline;
+}
+
+.note {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.login-username,.login-password,.login-submit-btn {
+    width:100%;
+    height:30px;
+    margin-top:20px;
+}
+ 
+/*end login area*/
+
+/*profile*/
+.edit {
+    cursor:pointer;
+}
+.profile-pic {
+    height:200px;
+}
+.member-since, .member-since-value, .profile-views,
+ .profile-views-value, .email, .email-value,
+ .real-name, .real-name-value {
+ 
+    display:inline;
+}
+
+.profile-movie-img {
+    height: 175px;
+    border-radius: 20px;
+    border: medium solid;
+    margin-right: 20px;
+    margin-top: 20px;
+    cursor:pointer;
+}
+
+.profile-movie-quote {
+    margin:10px;
+}
+/* end profile page*/
+
+/* results Page*/
+
+/*movie details*/
+.movie-thumbnail {
+    height:389px;
+    width:245px;
+    border-radius:4px;
+    border:medium solid;
+}
+.movie-title {
+    font-size:24px;
+    font-weight:500;
+}
+.movie-genre {
+    display: table;
+    border-radius: 3px;
+    font-size: 17px;
+    padding: 5px;
+    margin-top:10px;
+    background-color: rgb(250, 219, 165);
+}
+.movie-overview {
+    margin-top:10px;
+}
+.movie-tagline {
+    font-size: 30px;
+    margin-top:10px;
+    color: rgb(184, 196, 135);
+}
+/*YouTube Player details*/
+#player {
+    display:none;
+}
+
+.write-review-action {
+    margin:10px;
+}
+.add-favorites-action {
+    margin-left:15px;
+}
+
+/* similar-movies */
+.similar-movie-img {
+    height: 300px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius:4px;
+    border:medium solid;
+}
+.suggestion-box {
+    font-size:20px;
+}
+/*end similar movies*/
+
+/*reviews*/
+.review-critic {
+    display: inline;
+    color: #428BCA;
+}
+.review-date {
+    display: inline;
+    margin-left: 10px;
+}
+
+.review-area {
+    width: 100%;
+    height: 40%;
+    resize: none;
+    margin-top: 10px;
+}
+.review-submit-btn {
+    display: block;
+    margin-top: 20px;
+}
+/*end review*/
+
+/*end results page*/
