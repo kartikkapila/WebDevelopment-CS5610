@@ -67,13 +67,9 @@
             proj.home.dom.search_input.focus();
 
             // play controls
-            proj.home.dom.previous_upcoming_movies.on('mouseenter',this.mouseEnterOnPrevious);
-            proj.home.dom.previous_upcoming_movies.on('mouseleave',this.mouseLeaveOnPrevious);
             proj.home.dom.previous_upcoming_movies.click(function () {
                 proj.home.controller.display_data(2);
             });
-            proj.home.dom.next_upcoming_movies.on('mouseenter',this.mouseEnterOnNext);
-            proj.home.dom.next_upcoming_movies.on('mouseleave',this.mouseLeaveOnNext);
             proj.home.dom.next_upcoming_movies.click(function () {
                 proj.home.controller.display_data(1);
             });
@@ -88,18 +84,6 @@
             proj.home.dom.login_btn.click(proj.home.controller.login_btn_clicked);
             proj.home.dom.logout_btn.click(proj.home.controller.logout_btn_clicked);
 
-        },
-        mouseEnterOnPrevious: function () {
-            $(this).css('opacity', 1.0);
-        },
-        mouseLeaveOnPrevious:function() {
-            $(this).css('opacity',0.7);
-        },
-        mouseEnterOnNext: function () {
-            $(this).css('opacity', 1.0);
-        },
-        mouseLeaveOnNext: function () {
-            $(this).css('opacity', 0.7);
         },
         // display search results
         search_btn_clicked: function (event) {
