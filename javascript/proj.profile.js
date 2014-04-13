@@ -3,7 +3,7 @@
         proj.profile.shared_variables.username = username;
         proj.profile.services.init();
         proj.profile.controller.init();
-
+        proj.profile.controller.handleWelcomeMessage(username);
         proj.showPage("profile");
     },
     shared_variables: {
@@ -14,7 +14,8 @@
     },
     dom: {
 
-        edit:null,
+        profile_pic:null,
+        user_username:null,
         profile_views_value: null,
         email_value: null,
         real_name_value: null,
@@ -28,7 +29,8 @@
         a_review:null,
 
         init: function () {
-            proj.profile.dom.edit = $(".edit");
+            proj.profile.dom.profile_pic = $(".profile-pic");
+            proj.profile.dom.user_username = $(".user-username");
             proj.profile.dom.profile_views_value = $(".profile-views-value");
             proj.profile.dom.email_value = $(".email-value");
             proj.profile.dom.real_name_value = $(".real-name-value");
@@ -66,11 +68,27 @@
                 }
             });
         },
+
         moreInformationAskedFor: function (event) {
             var imdbId = event.currentTarget.id;
             proj.profile.services.getMovieNameFromId(imdbId);
+        },
+
+        handleWelcomeMessage: function (username) {
+            if (proj.state.currentUser.username != null) {
+                if (proj.state.currentUser.username != username) {
+                    proj.profile.dom.user_username.html(
+                        "Welcome " + proj.state.currentUser.username +
+                        ", you are currently viewing " + username + " profile");
+                } else {
+                    proj.profile.dom.user_username.html("Welcome " + proj.state.currentUser.username);
+                }
+            } else {
+                proj.profile.dom.user_username.html("you are currently viewing " + username + " profile");
+            }
         }
     },
+
     services: {
 
         init: function () {
@@ -82,8 +100,8 @@
                 username: ""+username
             }
             $.ajax({
-//                url: 'http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getUserInfoByUsername',
-                url: "http://localhost:1316/MoviesWebService.asmx/getUserInfoByUsername",
+                url: 'http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getUserInfoByUsername',
+//                url: "http://localhost:1316/MoviesWebService.asmx/getUserInfoByUsername",
                 data: JSON.stringify(param),
                 type: "post",
                 contentType: "application/json",
@@ -96,8 +114,8 @@
                 username:proj.profile.shared_variables.username
             }
             $.ajax({
-                //url:"http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getFavorites"
-                url: "http://localhost:1316/MoviesWebService.asmx/getFavorites",
+                url:"http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getFavorites",
+                //url: "http://localhost:1316/MoviesWebService.asmx/getFavorites",
                 data: JSON.stringify(param),
                 type: 'post',
                 contentType: 'application/json',
@@ -110,8 +128,8 @@
                 username: proj.profile.shared_variables.username
             }
             $.ajax({
-                //url:"http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getReviews"
-                url: "http://localhost:1316/MoviesWebService.asmx/getReviews",
+                url:"http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getReviews",
+                //url: "http://localhost:1316/MoviesWebService.asmx/getReviews",
                 data: JSON.stringify(param),
                 type: 'post',
                 contentType: 'application/json',
@@ -151,6 +169,7 @@
     renderer: {
 
         displayUserInfo: function (response) {
+            proj.profile.dom.profile_pic.attr('src', response.d.imgsrc);
             proj.profile.dom.profile_views_value.html(response.d.profileViews);
             proj.profile.dom.email_value.html(response.d.email);
             proj.profile.dom.real_name_value.html(response.d.name);

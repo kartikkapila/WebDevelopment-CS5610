@@ -7,7 +7,8 @@
                 username:proj.state.currentUser.username
             }
             $.ajax({
-                url: "http://localhost:1316/MoviesWebService.asmx/checkFavoritesAlreadyExists",
+                url:"http://net4.ccs.neu.edu/home/kkpaila/MoviesWebService.asmx/checkFavoritesAlreadyExists",
+                //url: "http://localhost:1316/MoviesWebService.asmx/checkFavoritesAlreadyExists",
                 data: JSON.stringify(params),
                 type: 'post',
                 contentType: 'application/json',
@@ -27,7 +28,8 @@
                 username: proj.state.currentUser.username
             }
             $.ajax({
-                url: "http://localhost:1316/MoviesWebService.asmx/enterFavoriteMovie",
+                url:"http://net4.ccs.neu.edu/home/kkpaila/MoviesWebService.asmx/enterFavoriteMovie",
+                //url: "http://localhost:1316/MoviesWebService.asmx/enterFavoriteMovie",
                 data: JSON.stringify(params),
                 type: 'post',
                 contentType: 'application/json',

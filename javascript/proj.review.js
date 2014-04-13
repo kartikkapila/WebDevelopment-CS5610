@@ -35,8 +35,8 @@
                 imdbId: proj.review.dom.review_submit_btn.attr("id"),
             }
             $.ajax({
-                url: "http://localhost:1316/MoviesWebService.asmx/saveReview",
-                //                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/saveReview",
+                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/saveReview",
+                //url: "http://localhost:1316/MoviesWebService.asmx/saveReview",
                 data: JSON.stringify({ 'newReviewOrLike': newReviewOrLike }),
                 type: 'post',
                 contentType: 'application/json',

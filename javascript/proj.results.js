@@ -11,7 +11,6 @@
     shared_variables: {
         movieId: null,
         movieImdbId:null,
-        videoId: null,
     },
     dom: {
         search_input: null,
@@ -64,9 +63,6 @@
     controller: {
         init: function () {
             proj.results.dom.write_a_review.click(function (event) {
-                if (typeof (window.youtubePlayer) != undefined) {
-                    window.youtubePlayer.stopVideo();
-                }
                 if (proj.state.currentUser.username == null) {
                     proj.login.showPage("login");
                 } else {
@@ -117,8 +113,8 @@
             window.onYouTubeIframeAPIReady = function () {
                 youtubePlayer = new YT.Player('player', {
                     height: '390',
-                    width: '640',
-                    videoId: "" + proj.results.shared_variables.videoId,
+                    width: '100%',
+                    videoId: "" + window.videoId,
                     events: {
                         'onReady': onPlayerReady
                     }
@@ -128,22 +124,18 @@
                 event.target.playVideo();
             }
             if (typeof (window.youtubePlayer) != 'undefined')
-                window.youtubePlayer.loadVideoById(proj.results.shared_variables.videoId);
+                window.youtubePlayer.loadVideoById(window.videoId);
         },
 
         decideReviewsToDisplay: function (id,imdbId) {
             if (proj.results.dom.rotten_tomatoes_reviews.hasClass('active')) {
-                console.log('rotten tomatoes');
                 proj.results.services.getReviews(id, proj.results.renderer.renderMovieReviews);
             } else {
-                console.log('registered users');
                 proj.results.services.getReviewsOfRegisteredUsers(imdbId, proj.results.renderer.renderMovieReviewsOfRegisteredUsers);
             }
         },
 
         handleUsernameClicked: function (event) {
-            console.log('problem here??');
-            window.youtubePlayer.stopVideo();
             proj.profile.showPage(event.currentTarget.id);
         }
 
@@ -192,7 +184,7 @@
             $.ajax({
                 url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movieName + "Trailer" + "&type=video&key=AIzaSyDHaNEKN20GYUi9OGdwjDDQT1FztnmTOEg",
                 success: function (response) {
-                    proj.results.shared_variables.videoId = response.items[0].id.videoId;
+                    window.videoId = response.items[0].id.videoId;
                     proj.results.controller.findMovieOnYouTubeById();
                 }
             });
@@ -227,7 +219,8 @@
                 imdbId : id
             }
             $.ajax({
-                url: "http://localhost:1316/MoviesWebService.asmx/getReviewsByImdbId",
+                url:"http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getReviewsByImdbId",
+                //url: "http://localhost:1316/MoviesWebService.asmx/getReviewsByImdbId",
                 data: JSON.stringify(params),
                 type: 'post',
                 contentType: 'application/json',

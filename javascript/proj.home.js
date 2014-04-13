@@ -46,10 +46,10 @@
             proj.home.dom.upcoming_movies = $(".upcoming-movies");
             proj.home.dom.upcoming_movies_info = $(".upcoming-movies-info");
 
-            proj.home.dom.upcoming_movies_title = $(".upcoming-movies-title");
-            proj.home.dom.upcoming_movies_release_date = $(".upcoming-movies-release-date");
-            proj.home.dom.upcoming_movies_synopsis = $(".upcoming-movies-synopsis");
-            proj.home.dom.upcoming_movies_runtime = $(".upcoming-movies-runtime");
+            proj.home.dom.upcoming_movies_title = $(".upcoming-movies-title").clone().removeClass("templates");
+            proj.home.dom.upcoming_movies_release_date = $(".upcoming-movies-release-date").clone().removeClass("templates");
+            proj.home.dom.upcoming_movies_synopsis = $(".upcoming-movies-synopsis").clone().removeClass("templates");
+            proj.home.dom.upcoming_movies_runtime = $(".upcoming-movies-runtime").clone().removeClass("templates");
             proj.home.dom.upcoming_movie_casts = $(".upcoming-movie-casts");
             proj.home.dom.upcoming_movies_casts_img = $(".upcoming-movies-casts-img");
 
@@ -236,7 +236,7 @@
                 proj.home.dom.upcoming_movies_title,
                 proj.home.dom.upcoming_movies_release_date,
                 proj.home.dom.upcoming_movies_synopsis,
-                proj.home.dom.upcoming_movies_runtime).hide().fadeIn("slow");
+                proj.home.dom.upcoming_movies_runtime).hide();
 
             proj.home.services.getUpcomingMoviesCastInfo("tt" + currentUpcomingMovieData.alternate_ids.imdb,proj.home.renderer.renderUpcomingMoviesCastInfo);
 
@@ -250,7 +250,7 @@
                         proj.home.dom.upcoming_movie_casts.append(
                             cast_img.attr('src', "http://image.tmdb.org/t/p/w300/" + response.cast[i].profile_path).clone());
                 }
-                proj.home.dom.upcoming_movies_info.append(proj.home.dom.upcoming_movie_casts).hide().fadeIn("slow");
+                proj.home.dom.upcoming_movies_info.append(proj.home.dom.upcoming_movie_casts).fadeIn("slow");
 
             } else {
                 for (var i = 0; i < response.cast.length; i++) {
@@ -258,7 +258,7 @@
                         proj.home.dom.upcoming_movie_casts.append(
                             cast_img.attr('src', "http://image.tmdb.org/t/p/w300/" + response.cast[i].profile_path).clone());
                 }
-                proj.home.dom.upcoming_movies_info.append(proj.home.dom.upcoming_movie_casts).hide().fadeIn("slow");
+                proj.home.dom.upcoming_movies_info.append(proj.home.dom.upcoming_movie_casts).fadeIn("slow");
 
             }
         }

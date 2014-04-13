@@ -34,10 +34,6 @@
             <div class="row upcoming-movie-area">
                 <div class="upcoming-movies col-md-3"></div>
                 <div class="upcoming-movies-info col-md-8">
-                    <h3 class="upcoming-movies-title"></h3>
-                    <h4 class="upcoming-movies-release-date"></h4>
-                    <pre class="upcoming-movies-synopsis"></pre>
-                    <h5 class="upcoming-movies-runtime"></h5>
                     <div class="upcoming-movie-casts"></div>
                 </div>
             </div>
@@ -60,7 +56,7 @@
                     <input class="login-username" type="text" placeholder="Enter Username"/><br />
                     <input class="login-password" type="password" placeholder="Enter Password"/><br />
                     <button class="btn btn-info login-submit-btn">login</button><br /><br /><br /><br />
-                    <div class="note">Note:</div><h5 class="message">For security reasons, we do not allow people to register on this website. If you need to test a
+                    <div class="note">Note:</div><h5 class="message"> For security reasons, we do not allow people to register on this website. If you need to test a
                         functionality for which you need to login, please send me an email(kkapila@ccs.neu.edu) about your information and I shall
                         provide you the credentials.</h5>
                 </div>
@@ -70,7 +66,7 @@
         <div class="profile-page page profile">
             <h3 class="profile-page-h3">Profile</h3><hr />
             <div class="btn-toolbar">
-                <h4 class="edit">edit</h4>
+                <h4 class="user-username"></h4>
             </div><hr />
             <br />
             <div class="row">
@@ -146,6 +142,10 @@
     <div class="templates">
         <!-- upcomimg movies -->
         <img class="upcoming-movies-img templates" src="#" />
+        <h3 class="upcoming-movies-title templates"></h3>
+        <h4 class="upcoming-movies-release-date templates"></h4>
+        <pre class="upcoming-movies-synopsis templates"></pre>
+        <h5 class="upcoming-movies-runtime templates"></h5>
         <img class="upcoming-movies-casts-img templates" src="#" />
         <!-- in theatre movies -->
         <img class="in-theatre-movies-img templates" src="#" />

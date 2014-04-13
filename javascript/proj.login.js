@@ -36,7 +36,6 @@
                 }
             });
         },
-
     },
     services: {
         checkUser: function (username, password) {
@@ -45,8 +44,8 @@
                 password:password
             }
             $.ajax({
-//              url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/checkUser",
-                url:"http://localhost:1316/MoviesWebService.asmx/checkUser",
+                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/checkUser",
+                //url:"http://localhost:1316/MoviesWebService.asmx/checkUser",
                 data: JSON.stringify(param),
                 type: 'post',
                 contentType: 'application/json',

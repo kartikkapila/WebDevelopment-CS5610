@@ -20,7 +20,9 @@ public class WebService  : System.Web.Services.WebService {
         using(kkapilaCSDataContext db = new kkapilaCSDataContext()) {
             var result = (from user in db.proj_users where user.username == username select user).FirstOrDefault();
             if (result != null) {
-                UserTO newUser = new UserTO(result.name, result.username, result.password, result.email, result.aboutMe, result.profileViews);
+                UserTO newUser = new UserTO(
+                    result.name, result.username, result.password, result.email, result.aboutMe, result.profileViews,result.imgsrc
+                    );
                 return newUser;
             } return null;
         }
