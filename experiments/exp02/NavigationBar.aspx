@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NavigationBar.aspx.cs" Inherits="experiments_exp02_MenuBar" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 

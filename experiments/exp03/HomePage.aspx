@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="experiments_exp03_HomePage" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 

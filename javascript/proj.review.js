@@ -43,6 +43,7 @@
                 dataType:'json',
                 success: function (response) {
                     if (response.d == true) {
+                        proj.review.dom.review_area.html("");
                         alert('Your review has been stored');
                         $(".navbar.navbar-fixed-top").css('z-index', 1038);
                         proj.showPage("results");

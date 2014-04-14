@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StickyHeader.aspx.cs" Inherits="experiments_exp02_DesigningHomePage" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 

@@ -20,10 +20,8 @@
         <h4>Press the search button, to get the information about which user likes which reviews</h4>
         <h4>The terms searched are as follows:</h4>
         <ul><li>Username --> The usernames of all the people who have registered on the website.</li>
-            <li>Critic --> The person whose review the user has liked.</li>
             <li>Quote --> The review made by the critic.</li>
             <li>Imdb ID --> The imdb id related to the movie whose review we are talking about.</li>
-            <li>Member --> If the critic is a member of the site or not.</li>
         </ul>
         <input class="search-parameter" type="text" placeholder ="Enter username" />
         <button class="search-action">Search</button><br /><br /><br />
@@ -49,10 +47,8 @@
         <div class="templates">
             <div class="row"></div>
             <div class="username"></div>
-            <div class="critic"></div>
             <div class="quote"></div>
             <div class="imdbId"></div>
-            <div class="member"></div>
         </div>
     </div>
     <script src="../../jquery/jquery-2.1.0.min.js"></script>
@@ -76,18 +72,14 @@
             results_area.empty();
             var row = $(".row").clone();
             var username = $(".username").clone().addClass('likes');
-            var critic = $(".critic").clone().addClass('likes');
             var quote = $(".quote").clone().addClass('likes');
             var imdbId = $(".imdbId").clone().addClass('likes');
-            var member = $(".member").clone().addClass('likes');
 
             for (var i = 0; i < response.d.length; i++) {
                 username.text("Username:" + response.d[i].username);
-                critic.text("Critic:" + response.d[i].critic);
                 quote.html("Quote:" + response.d[i].quote);
                 imdbId.html("Imdb ID:" + response.d[i].imdbId);
-                member.html("Site Member?:" + response.d[i].member);
-                results_area.append(row.clone().append(username.clone(), critic.clone(), quote.clone(), imdbId.clone(), member.clone(), '<br>','<br>'));
+                results_area.append(row.clone().append(username.clone(), quote.clone(), imdbId.clone(), '<br>','<br>'));
             }
         }
     </script>

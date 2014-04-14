@@ -15,8 +15,9 @@
             <div class="margin-provider">
                 <ul class="nav-bar-provider">
                     <li><a href="#">Home</a></li>
-                    <li><a href="project/Default.aspx">Project</a></li>
-                    <li><a href="experiments/Experiments.aspx">Experiments</a></li>
+                    <li><a href="project/Default.aspx" target="_blank">Project</a></li>
+                    <li><a href="story/index.htm?../documentation/story.txt" target="_blank">Documentation</a></li>
+                    <li><a href="experiments/Experiments.aspx" target="_blank">Experiments</a></li>
                     <li><a href="blog/" target="_blank">Blog</a></li>
                 </ul>    
             </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RowAndColumns.aspx.cs" Inherits="experiments_exp02_RowAndColumns" %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 

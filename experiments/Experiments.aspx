@@ -12,10 +12,11 @@
         <div class="nav-background-provider">
             <div class="margin-provider">
                 <ul class="nav-bar-provider">
-                    <li><a href="../Default.aspx">Home</a></li>
-                    <li><a href="#">Project</a></li>
+                    <li><a href="../Default.aspx" target="_blank">Home</a></li>
+                    <li><a href="../project/Default.aspx" target="_blank">Project</a></li>
+                    <li><a href="../story/index.htm?../documentation/story.txt" target="_blank">Documentation</a></li>
                     <li><a href="#">Experiments</a></li>
-                    <li><a href="../blog/">Blog</a></li>
+                    <li><a href="../blog/" target="_blank">Blog</a></li>
                 </ul>    
             </div>
         </div>
