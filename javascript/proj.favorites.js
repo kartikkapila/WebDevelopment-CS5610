@@ -7,14 +7,16 @@
                 username:proj.state.currentUser.username
             }
             $.ajax({
-                url:"http://net4.ccs.neu.edu/home/kkpaila/MoviesWebService.asmx/checkFavoritesAlreadyExists",
+                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/checkFavoritesAlreadyExists",
                 //url: "http://localhost:1316/MoviesWebService.asmx/checkFavoritesAlreadyExists",
                 data: JSON.stringify(params),
                 type: 'post',
                 contentType: 'application/json',
                 success: function (response) {
-                    if(response.d == false)
+                    if (response.d == false) {
+                        console.log('here');
                         proj.favorites.services.addMovieToFavorites(id);
+                    }
                     else {
                         alert('Movie Aready in Favorites');
                     }
@@ -28,7 +30,7 @@
                 username: proj.state.currentUser.username
             }
             $.ajax({
-                url:"http://net4.ccs.neu.edu/home/kkpaila/MoviesWebService.asmx/enterFavoriteMovie",
+                url:"http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/enterFavoriteMovie",
                 //url: "http://localhost:1316/MoviesWebService.asmx/enterFavoriteMovie",
                 data: JSON.stringify(params),
                 type: 'post',
