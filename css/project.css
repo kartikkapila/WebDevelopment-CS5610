@@ -275,6 +275,7 @@ hr {
     margin-top: 20px;
     border-radius:4px;
     border:medium solid;
+    cursor:pointer;
 }
 .suggestion-box {
     font-size:20px;

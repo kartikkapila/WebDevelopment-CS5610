@@ -4,6 +4,7 @@
         proj.results.controller.init();
     },
     show: function (movieName) {
+        window.movieName = movieName;
         proj.results.services.getMoviebyName(movieName, proj.results.renderer.renderSearchedMovie);
         proj.results.services.getYouTubeId(movieName);
         proj.showPage("results");
@@ -101,11 +102,23 @@
                             proj.results.renderer.renderMovieReviewsOfRegisteredUsers);
                 }
             });
-
         },
 
         findMovieOnYouTubeById: function () {
             $("#player").css('display', 'inline-block');
+
+            if (typeof (window.youtubePlayer) != 'undefined' && window.youtubePlayer != null) {
+                window.youtubePlayer.destroy();
+                youtubePlayer = new YT.Player('player', {
+                    height: '390',
+                    width: '100%',
+                    videoId: "" + window.videoId,
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+            }
+
             var tag = document.createElement('script');
             tag.src = "https://www.youtube.com/iframe_api";
             var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -123,8 +136,6 @@
             window.onPlayerReady = function (event) {
                 event.target.playVideo();
             }
-            if (typeof (window.youtubePlayer) != 'undefined')
-                window.youtubePlayer.loadVideoById(window.videoId);
         },
 
         decideReviewsToDisplay: function (id,imdbId) {
@@ -181,6 +192,7 @@
         },
 
         getYouTubeId: function (movieName) {
+            console.log(movieName);
             $.ajax({
                 url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movieName + "Trailer" + "&type=video&key=AIzaSyDHaNEKN20GYUi9OGdwjDDQT1FztnmTOEg",
                 success: function (response) {

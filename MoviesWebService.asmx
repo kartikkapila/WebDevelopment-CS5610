@@ -135,4 +135,18 @@ public class WebService  : System.Web.Services.WebService {
             return list;
         }
     }
+
+    [WebMethod]
+    public int increaseProfileViews(string username) {
+        using (kkapilaCSDataContext db = new kkapilaCSDataContext()) {
+            var profileViews = 0;
+            var query = (from row in db.proj_users where row.username == username select row);
+            foreach (proj_user row in query) {
+                row.profileViews = row.profileViews + 1;
+                profileViews = row.profileViews;
+            }
+            db.SubmitChanges();
+            return profileViews;
+        }
+    }
 }

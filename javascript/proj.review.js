@@ -46,7 +46,7 @@
                         proj.review.dom.review_area.html("");
                         alert('Your review has been stored');
                         $(".navbar.navbar-fixed-top").css('z-index', 1038);
-                        proj.showPage("results");
+                        proj.results.show(window.movieName);
                     }
                 }
             });

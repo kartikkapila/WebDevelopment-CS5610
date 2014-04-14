@@ -4,6 +4,7 @@
         proj.profile.services.init();
         proj.profile.controller.init();
         proj.profile.controller.handleWelcomeMessage(username);
+        proj.profile.controller.handleProfileViews(username);
         proj.showPage("profile");
     },
     shared_variables: {
@@ -86,7 +87,14 @@
             } else {
                 proj.profile.dom.user_username.html("you are currently viewing " + username + " profile");
             }
+        },
+
+        handleProfileViews: function (username) {
+            if (username != proj.state.currentUser.username) {
+                proj.profile.services.increaseProfileViews(username,proj.profile.renderer.renderIncreasedProfileViews);
+            }
         }
+
     },
 
     services: {
@@ -157,11 +165,26 @@
                 }
             }
         },
+
         getMovieNameFromId: function (imdbId) {
             proj.results.services.searchMovieInfo(imdbId,proj.profile.services.extractMovieName);
         },
+
         extractMovieName: function (response) {
             proj.results.show(response.original_title);
+        },
+
+        increaseProfileViews: function (username, callback) {
+            var params = {
+                username:username
+            }
+            $.ajax({
+                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/increaseProfileViews",
+                data: JSON.stringify(params),
+                type: 'post',
+                contentType: 'application/json',
+                success:callback
+            });
         }
 
     },
@@ -191,6 +214,12 @@
             proj.profile.dom.displaying_profile_info.append(
                 proj.profile.dom.profile_movie_quote.clone()
                 .append(proj.profile.dom.profile_reviews_more_info_link.clone().on('click', proj.profile.controller.moreInformationAskedFor)));
+        },
+
+        renderIncreasedProfileViews: function (response) {
+            if (response.d != 0) {
+                proj.profile.dom.profile_views_value.html(response.d);
+            }
         }
     }
 }

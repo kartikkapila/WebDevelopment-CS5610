@@ -23,7 +23,11 @@
         init: function () {
             proj.login.dom.close.click(function () {
                 $(".navbar.navbar-fixed-top").css('z-index', 1038);
-                proj.showPage(proj.state.previousPage);
+                if (proj.state.previousPage != "results")
+                    proj.showPage(proj.state.previousPage);
+                else {
+                    proj.results.show(window.movieName);
+                }
             });
             proj.login.dom.login_submit_btn.click(function () {
                 var username = proj.login.dom.login_username.val();
@@ -56,7 +60,11 @@
                         proj.home.dom.login_btn.removeClass("home results");
                         proj.home.dom.logout_btn.addClass("home results");
                         $(".navbar.navbar-fixed-top").css('z-index', 1038);
-                        proj.showPage(proj.state.previousPage);
+                        if(proj.state.previousPage != "results")
+                            proj.showPage(proj.state.previousPage);
+                        else {
+                            proj.results.show(window.movieName);
+                        }
                     } else {
                         alert('Invalid username and password');
                     }
