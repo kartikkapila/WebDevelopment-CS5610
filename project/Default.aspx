@@ -73,7 +73,7 @@
                 <div class="col-md-3">
                     <img class ="profile-pic" src="../images/profile-pic-default.png" />
                 </div>
-                <div class="col-md-3"">
+                <div class="col-md-3">
                     <br />
                     <h5 class="member-since">member since:</h5><h5 class="member-since-value">10days</h5>
                     <br /><br />

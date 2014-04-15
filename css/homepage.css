@@ -211,3 +211,9 @@ hr
     padding:2px;
     border-radius:3px;
 }
+
+
+.glyphicon .glyphicon-star {
+    color:red;
+    font-size:15px;
+}

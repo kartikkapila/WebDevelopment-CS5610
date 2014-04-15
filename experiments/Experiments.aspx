@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Experiments</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/homepage.css" />
 </head>
 <body>
@@ -22,31 +23,33 @@
         </div>
         <div class="table container">
             <div class="tools-cell">
-                <h3>Experiments</h3>
-                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp15/story.txt">Local Storage</a><h4>New</h4></div></li></ul>
+                <h3>Experiments</h3><br />
+                <ul><li><a href="../story/index.htm?../experiments/exp16/story.txt" target="_blank">Hash Change </a><span class="glyphicon glyphicon-star"></span></li></ul>
                 <hr />
-                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp14/story.txt">LINQ to SQL</a></div></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp15/story.txt" target="_blank">Local Storage </a><span class="glyphicon glyphicon-star"></span></li></ul>
                 <hr />
-                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp13/story.txt">Login Experiments</a></div></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp14/story.txt" target="_blank">LINQ to SQL</a></li></ul>
                 <hr />
-                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp12/story.txt">Creating WebServices</a></div></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp13/story.txt" target="_blank">Login Experiments</a></li></ul>
                 <hr />
-                <ul><li><div class="new-style"><a href="../story/index.htm?../experiments/exp10/story.txt">Databases</a></div></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp12/story.txt" target="_blank">Creating WebServices</a></li></ul>
                 <hr />
-                <ul><li><a href="../story/index.htm?../experiments/exp09/story.txt">WebServices</a></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp10/story.txt" target="_blank">Databases</a></li></ul>
                 <hr />
-                <ul><li><a href="../story/index.htm?../experiments/exp08/story.txt">jQuery</a></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp09/story.txt" target="_blank">WebServices </a><span class="glyphicon glyphicon-star"></span></li></ul>
                 <hr />
-                <ul><li><a href="../story/index.htm?../experiments/exp05/story.txt">CSS</a></li></ul>
+                <ul><li><a href="../story/index.htm?../experiments/exp08/story.txt" target="_blank">jQuery</a></li></ul>
+                <hr />
+                <ul><li><a href="../story/index.htm?../experiments/exp05/story.txt" target="_blank">CSS</a></li></ul>
                <hr />
                <ul>
-                   <li><a href="../story/index.htm?../experiments/exp01/ResponsiveWebPages/story.txt">Responsive Web Pages</a></li>
-                   <li><a href="../story/index.htm?../experiments/exp02/story.txt">Designing Home Page</a></li>
+                   <li><a href="../story/index.htm?../experiments/exp01/ResponsiveWebPages/story.txt" target="_blank">Responsive Web Pages</a></li>
+                   <li><a href="../story/index.htm?../experiments/exp02/story.txt" target="_blank">Designing Home Page</a></li>
                </ul>
                <hr />
             </div>
             <div class="tools-cell">
-               <h3>Quick Links</h3>
+               <h3>Quick Links</h3><br />
                 <ul>
                     <li><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
                     <li><a href="statistics/" target="_blank">Statistics</a></li>

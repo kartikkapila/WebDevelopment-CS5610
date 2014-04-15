@@ -118,7 +118,7 @@
              */
             var classHolder = 0;
             if (flag == 0) {
-                $(".upcoming-movies ." + 0).fadeIn(500, "swing");
+                $(".upcoming-movies ." + 4).fadeIn(500, "swing");
             } else if (flag == 1) {
                 for (var j = 0; j < proj.home.shared_variables.total_upcoming_movies; j++) {
                     if ($(".upcoming-movies ." + j).css('display') == 'inline') {
