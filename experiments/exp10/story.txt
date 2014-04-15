@@ -1,4 +1,6 @@
 Database00.aspx Displaying data using grid view
 Database01.aspx Displaying data using a grid and paging
 Database02.aspx Displaying data using repeater
+../../database/database.aspx?cs=kkapilaCS&db=proj_likes Reviews Tables
+../../database/database.aspx?cs=kkapilaCS&db=Favorites Favorites Table
 story.txt Story
