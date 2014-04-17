@@ -29,4 +29,10 @@
       <Association Name="proj_user_proj_like" Member="proj_likes" ThisKey="username" OtherKey="username" Type="proj_like" />
     </Type>
   </Table>
+  <Table Name="dbo.TopMovies" Member="TopMovies">
+    <Type Name="TopMovy">
+      <Column Name="imdbId" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

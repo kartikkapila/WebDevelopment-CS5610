@@ -192,7 +192,8 @@
     renderer: {
 
         displayUserInfo: function (response) {
-            proj.profile.dom.profile_pic.attr('src', response.d.imgsrc);
+            proj.profile.dom.profile_pic.attr('src', response.d.imgsrc)
+            ;
             proj.profile.dom.profile_views_value.html(response.d.profileViews);
             proj.profile.dom.email_value.html(response.d.email);
             proj.profile.dom.real_name_value.html(response.d.name);
@@ -202,10 +203,13 @@
         renderFavoriteMovie: function (response) {
             proj.profile.dom.profile_movie_img
                 .attr('src', "http://image.tmdb.org/t/p/w300" + response.poster_path)
-                .attr('id',response.imdb_id);
+                .attr('id', response.imdb_id);
             proj.profile.dom.displaying_profile_info.append(
-                proj.profile.dom.profile_movie_img.clone().on('click',proj.profile.controller.moreInformationAskedFor)
-                );
+                proj.profile.dom.profile_movie_img
+                .clone()
+                .on('click', proj.profile.controller.moreInformationAskedFor)
+                .on('mouseenter', response, proj.home.controller.mouseEntered)
+                .on('mouseleave', response, proj.home.controller.mouseLeave));
         },
 
         renderReviews: function (imdbId, quote) {

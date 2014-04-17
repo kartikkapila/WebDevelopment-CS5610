@@ -29,6 +29,9 @@
         previous_upcoming_movies: null,
         next_upcoming_movies: null,
 
+        top_favorite_movies: null,
+        top_favorites_img :null,
+
         in_theatre_movies: null,
         in_theatre_movies_img:null,
 
@@ -52,6 +55,10 @@
             proj.home.dom.upcoming_movies_runtime = $(".upcoming-movies-runtime").clone().removeClass("templates");
             proj.home.dom.upcoming_movie_casts = $(".upcoming-movie-casts");
             proj.home.dom.upcoming_movies_casts_img = $(".upcoming-movies-casts-img");
+
+            //top favorites
+            proj.home.dom.top_favorite_movies = $(".top-favorite-movies");
+            proj.home.dom.top_favorites_img = $(".top-favorites-img").clone().removeClass("templates");
 
             // slider controls
             proj.home.dom.previous_upcoming_movies = $(".previous-upcoming-movies");
@@ -105,6 +112,10 @@
         handleUpcomingMoviesClicked: function(event) {
             proj.results.show(event.currentTarget.id);
         },
+        // top favorites clicked
+        handleTopFavoriteMovieClicked: function (event) {
+            proj.results.show(event.currentTarget.id);
+        },
         // in theatre movies clicked
         handleInTheatreMoviesClicked: function (event) {
             proj.results.show(event.currentTarget.id);
@@ -146,12 +157,21 @@
             }
 
             proj.home.renderer.renderUpcomingMoviesInfo(classHolder);
+        },
+
+        mouseEntered: function (event) {
+            $(this).css('border', 'solid red');
+        },
+
+        mouseLeave: function (event) {
+            $(this).css('border', 'solid black');
         }
     },
 
     services: {
         init: function () {
             proj.home.services.loadUpcomingMovies(proj.home.renderer.renderUpcomingMovies);
+            proj.home.services.loadTopFavoriteMovies(proj.home.renderer.renderTopFavoriteMovies);
             proj.home.services.loadInTheatreMovies(proj.home.renderer.renderInTheatreMovies);
         },
         loadUpcomingMovies: function (callback) {
@@ -165,6 +185,17 @@
                 success: callback
             });
         },
+
+        loadTopFavoriteMovies:function(callback) {
+            $.ajax({
+                url: "http://net4.ccs.neu.edu/home/kkapila/MoviesWebService.asmx/getTopFavorites",
+                //url:"http://localhost:1316/MoviesWebService.asmx/getTopFavorites"
+                type: 'post',
+                contentType: 'application/json',
+                success: callback
+            });
+        },
+
         loadInTheatreMovies: function (callback) {
             var param = {
                 apikey: "y89qq3t53gmyxjrna294v2jg",
@@ -194,9 +225,14 @@
 
         renderUpcomingMovies: function (response) {
             var k = 0;
-            var upcoming_movies_img = $(".upcoming-movies-img").clone().removeClass("templates");
+            var upcoming_movies_img = $(".upcoming-movies-img")
+                .clone()
+                .removeClass("templates");
+            
+
             proj.home.shared_variables.total_upcoming_movies = response.movies.length;
             proj.home.dom.upcoming_movies.empty();
+
             for (var i = 0; i < proj.home.shared_variables.total_upcoming_movies; i++) {
                 if (response.movies[i].posters.profile != "http://images.rottentomatoescdn.com/images/redesign/poster_default.gif") {
                     proj.home.dom.upcoming_movies.append(
@@ -206,12 +242,30 @@
                         .attr('id',response.movies[i].title)
                         .addClass("" + k)
                         .on('click', proj.home.controller.handleUpcomingMoviesClicked)
+                        .on('mouseenter', response, proj.home.controller.mouseEntered)
+                        .on('mouseleave', response, proj.home.controller.mouseLeave)
                         .data("movie", response.movies[i]));
                     k++;
                 }
             }
             proj.home.shared_variables.total_upcoming_movies = k;
             proj.home.controller.display_data(0);
+        },
+
+        renderTopFavoriteMovies: function (response) {
+            for (var i = 0; i < response.d.length; i++) {
+                proj.results.services.searchMovieInfo(response.d[i].imdbId, proj.home.renderer.renderTopFavoritesInfoReceived);
+            }
+        },
+
+        renderTopFavoritesInfoReceived: function (response) {
+            proj.home.dom.top_favorite_movies.append(
+                proj.home.dom.top_favorites_img.clone()
+                   .attr('src', "http://image.tmdb.org/t/p/w300" + response.poster_path)
+                   .attr('id', response.original_title)
+                   .on('click',proj.home.controller.handleTopFavoriteMovieClicked)
+                   .on('mouseenter', response, proj.home.controller.mouseEntered)
+                   .on('mouseleave', response, proj.home.controller.mouseLeave)).hide().fadeIn("slow");
         },
 
         renderInTheatreMovies: function (response) {
@@ -221,7 +275,9 @@
                     .clone()
                     .attr('id',response.movies[i].title)
                     .attr('src', response.movies[i].posters.original)
-                    .on('click',proj.home.controller.handleInTheatreMoviesClicked));
+                    .on('click', proj.home.controller.handleInTheatreMoviesClicked)
+                    .on('mouseenter', response, proj.home.controller.mouseEntered)
+                    .on('mouseleave', response, proj.home.controller.mouseLeave)).hide().fadeIn("slow");
             }
         },
 

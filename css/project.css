@@ -79,7 +79,7 @@ hr {
     display:table;
 }
 .upcoming-movies img {
-    border:5px solid;
+    border:solid;
     border-radius:4px;
     height:325px;
     display:none;
@@ -124,12 +124,25 @@ hr {
 }
 /*end upcoming movies area*/
 
+/* top favorite movies*/ 
+.top-favorites-img {
+    margin-top: 10px;
+    margin-right: 20px;
+    height: 225px;
+    width: 150px;
+    border-radius: 4px;
+    border: medium solid;
+    cursor:pointer;
+}
+
+
+
 /*in theater movies*/
 .in-theatre-movies-img {
     margin-top: 10px;
     margin-right: 20px;
-    height: 150px;
-    width: 100px;
+    height: 225px;
+    width: 150px;
     border-radius: 4px;
     border: medium solid;
     cursor:pointer;
@@ -216,7 +229,7 @@ hr {
 .profile-movie-img {
     height: 175px;
     border-radius: 20px;
-    border: medium solid;
+    border: solid black;
     margin-right: 20px;
     margin-top: 20px;
     cursor:pointer;
@@ -292,7 +305,7 @@ hr {
     margin-right: 20px;
     margin-top: 20px;
     border-radius:4px;
-    border:medium solid;
+    border:solid black;
     cursor:pointer;
 }
 @media(max-width:300px) {
@@ -328,3 +341,11 @@ hr {
 /*end review*/
 
 /*end results page*/
+
+/*footer area*/
+.footer {
+    position: relative;
+    margin-top: 0px;
+    clear: both;
+    padding-top: 20px;
+}

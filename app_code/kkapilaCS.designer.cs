@@ -39,6 +39,9 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
     partial void Insertproj_user(proj_user instance);
     partial void Updateproj_user(proj_user instance);
     partial void Deleteproj_user(proj_user instance);
+    partial void InsertTopMovy(TopMovy instance);
+    partial void UpdateTopMovy(TopMovy instance);
+    partial void DeleteTopMovy(TopMovy instance);
     #endregion
 		
 		public kkapilaCSDataContext() : 
@@ -92,6 +95,14 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 			get
 			{
 				return this.GetTable<proj_user>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TopMovy> TopMovies
+		{
+			get
+			{
+				return this.GetTable<TopMovy>();
 			}
 		}
 	}
@@ -657,6 +668,92 @@ namespace edu.neu.ccis.kkapila.kkapilaCS
 		{
 			this.SendPropertyChanging();
 			entity.proj_user = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TopMovies")]
+	public partial class TopMovy : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _imdbId;
+		
+		private int _count;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnimdbIdChanging(string value);
+    partial void OnimdbIdChanged();
+    partial void OncountChanging(int value);
+    partial void OncountChanged();
+    #endregion
+		
+		public TopMovy()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imdbId", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string imdbId
+		{
+			get
+			{
+				return this._imdbId;
+			}
+			set
+			{
+				if ((this._imdbId != value))
+				{
+					this.OnimdbIdChanging(value);
+					this.SendPropertyChanging();
+					this._imdbId = value;
+					this.SendPropertyChanged("imdbId");
+					this.OnimdbIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_count", DbType="Int NOT NULL")]
+		public int count
+		{
+			get
+			{
+				return this._count;
+			}
+			set
+			{
+				if ((this._count != value))
+				{
+					this.OncountChanging(value);
+					this.SendPropertyChanging();
+					this._count = value;
+					this.SendPropertyChanged("count");
+					this.OncountChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

@@ -24,6 +24,11 @@ z-index: 1030;
 display: table;
 height: 50px;
 }
+@media(max-width:460px) {
+    .nav-background-provider {
+        display:none;
+    }
+}
 
 .margin-provider
 {         

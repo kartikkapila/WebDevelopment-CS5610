@@ -192,7 +192,6 @@
         },
 
         getYouTubeId: function (movieName) {
-            console.log(movieName);
             $.ajax({
                 url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movieName + "Trailer" + "&type=video&key=AIzaSyDHaNEKN20GYUi9OGdwjDDQT1FztnmTOEg",
                 success: function (response) {
@@ -276,7 +275,9 @@
                         .fadeIn(700, "swing")
                         .on('click', response, function (response) {
                             proj.results.show(response.currentTarget.id);
-                        }));
+                        })
+                        .on('mouseenter', response, proj.home.controller.mouseEntered)
+                        .on('mouseleave', response, proj.home.controller.mouseLeave));
                 }
             } else {
                 proj.results.dom.similar_movies_holder.append(

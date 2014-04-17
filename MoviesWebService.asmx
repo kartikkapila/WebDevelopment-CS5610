@@ -120,6 +120,33 @@ public class WebService  : System.Web.Services.WebService {
     }
     
     [WebMethod]
+    public bool incrementFavoritesCount(string imdbId) {
+        using (kkapilaCSDataContext db = new kkapilaCSDataContext()) {
+            var query = (from row in db.TopMovies where row.imdbId == imdbId select row);
+            foreach (TopMovy row in query) {
+                row.count = row.count + 1;
+            }
+            db.SubmitChanges();
+            return true;
+        }
+    }
+    
+    [WebMethod]
+    public List<TopMovy> getTopFavorites() {
+        using (kkapilaCSDataContext db = new kkapilaCSDataContext())
+        {
+            List<TopMovy> list = new List<TopMovy>();
+            var query = (from row in db.TopMovies orderby row.count descending select row).Take(5);
+            foreach (TopMovy row in query)
+            {
+                list.Add(row);
+            }
+            return list;
+        }        
+    }
+    
+    
+    [WebMethod]
     public List<FavoritesTO> getFavorites(string username) {
         using (kkapilaCSDataContext db = new kkapilaCSDataContext())
         {

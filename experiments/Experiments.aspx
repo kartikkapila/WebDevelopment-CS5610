@@ -51,15 +51,15 @@
             <div class="tools-cell">
                <h3>Quick Links</h3><br />
                 <ul>
-                    <li><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
-                    <li><a href="statistics/" target="_blank">Statistics</a></li>
-                    <li><a href="source/" target="_blank">Source</a></li>
-                    <li><a href="search/" target="_blank">Search</a></li>
-                    <li><a href="searchtree/" target="_blank">SearchTree</a></li>
-                    <li><a href="textview/" target="_blank">TextView</a></li>
-                    <li><a href="filelist.aspx" target="_blank">FileList</a></li>
-                    <li><a href="autofile.aspx" target="_blank">AutoFile</a></li>
-                    <li><a href="images/autoimage.aspx" target="_blank">Images</a></li>
+                    <li><a href="../sitestatistics/" target="_blank">SiteStatistics</a></li>
+                    <li><a href="../statistics/" target="_blank">Statistics</a></li>
+                    <li><a href="../source/" target="_blank">Source</a></li>
+                    <li><a href="../search/" target="_blank">Search</a></li>
+                    <li><a href="../searchtree/" target="_blank">SearchTree</a></li>
+                    <li><a href="../textview/" target="_blank">TextView</a></li>
+                    <li><a href="../filelist.aspx" target="_blank">FileList</a></li>
+                    <li><a href="../autofile.aspx" target="_blank">AutoFile</a></li>
+                    <li><a href="../images/autoimage.aspx" target="_blank">Images</a></li>
                </ul>
             </div>
         </div>

@@ -20,6 +20,7 @@
     </div>
     <br /><br /><br />
     <div class="main container">
+        <h5 class="page home">Note for Graders: Please visit <a href="../documentation/page09.html" target="_blank">requirements</a> to find out about browser support and more useful information.</h5>
         <!-- Search Bar -->
         <div class="page home results search-bar">
             <input class ="search-input form-control" type="text" placeholder="Search your favorite movie"/>
@@ -42,6 +43,11 @@
                 <button class="btn btn-success next-upcoming-movies">next</button>
             </div>
         </div>
+        <!-- Top Favorite Movies -->
+        <div class="top-favorite-movies page home">
+            <h3>Top Movies on this site</h3>
+            <hr />
+        </div><br />
         <!-- In Theatre Movies -->
         <div class="in-theatre-movies-holder page home">
             <h3 class="in-theatre-movies-holder-title row">In Theatre Movies</h3>
@@ -137,6 +143,7 @@
                </div>
             </div>
        </div>
+       <footer class="footer">&copy; 2014 Kartik Kapila</footer>
     </div>
     <!-- Templates -->
     <div class="templates">
@@ -147,6 +154,8 @@
         <pre class="upcoming-movies-synopsis templates"></pre>
         <h5 class="upcoming-movies-runtime templates"></h5>
         <img class="upcoming-movies-casts-img templates" src="#" />
+        <!-- top favorites -->
+        <img class="top-favorites-img templates" src="#" />
         <!-- in theatre movies -->
         <img class="in-theatre-movies-img templates" src="#" />
         <!-- Movie Info in Profile -->
